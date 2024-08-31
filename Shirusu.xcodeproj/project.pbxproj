@@ -16,6 +16,11 @@
 		E43A9BFC2C83746B00716208 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E43A9BFA2C83746B00716208 /* LaunchScreen.storyboard */; };
 		E43A9C0A2C83775400716208 /* WriterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43A9C082C83775400716208 /* WriterVC.swift */; };
 		E43A9C0B2C83775400716208 /* WriterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E43A9C092C83775400716208 /* WriterVC.xib */; };
+		E46F6A672C837A2A008EF23A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F6A662C837A2A008EF23A /* TabBarController.swift */; };
+		E46F6A6E2C837CF0008EF23A /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F6A6C2C837CF0008EF23A /* SettingsVC.swift */; };
+		E46F6A6F2C837CF0008EF23A /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E46F6A6D2C837CF0008EF23A /* SettingsVC.xib */; };
+		E46F6A722C837CFA008EF23A /* SheetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F6A702C837CFA008EF23A /* SheetsVC.swift */; };
+		E46F6A732C837CFA008EF23A /* SheetsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E46F6A712C837CFA008EF23A /* SheetsVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +36,11 @@
 		E43A9BFD2C83746B00716208 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E43A9C082C83775400716208 /* WriterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriterVC.swift; sourceTree = "<group>"; };
 		E43A9C092C83775400716208 /* WriterVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WriterVC.xib; sourceTree = "<group>"; };
+		E46F6A662C837A2A008EF23A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E46F6A6C2C837CF0008EF23A /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		E46F6A6D2C837CF0008EF23A /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
+		E46F6A702C837CFA008EF23A /* SheetsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetsVC.swift; sourceTree = "<group>"; };
+		E46F6A712C837CFA008EF23A /* SheetsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SheetsVC.xib; sourceTree = "<group>"; };
 		F114BEE045FF0A1E7E0A62CA /* Pods_Shirusu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shirusu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -52,7 +62,6 @@
 				CD74E5DF3DFECB3A1938D5A3 /* Pods-Shirusu.debug.xcconfig */,
 				5AA00D37A00A92E8A55A6DA3 /* Pods-Shirusu.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -117,8 +126,8 @@
 		E43A9C062C83770500716208 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E43A9C082C83775400716208 /* WriterVC.swift */,
-				E43A9C092C83775400716208 /* WriterVC.xib */,
+				E46F6A682C837CC0008EF23A /* ViewControllers */,
+				E46F6A652C837A0E008EF23A /* TabBar */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -128,6 +137,51 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E46F6A652C837A0E008EF23A /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				E46F6A662C837A2A008EF23A /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		E46F6A682C837CC0008EF23A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E46F6A6B2C837CDB008EF23A /* Sheets */,
+				E46F6A6A2C837CD5008EF23A /* Settings */,
+				E46F6A692C837CD0008EF23A /* Writer */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E46F6A692C837CD0008EF23A /* Writer */ = {
+			isa = PBXGroup;
+			children = (
+				E43A9C082C83775400716208 /* WriterVC.swift */,
+				E43A9C092C83775400716208 /* WriterVC.xib */,
+			);
+			path = Writer;
+			sourceTree = "<group>";
+		};
+		E46F6A6A2C837CD5008EF23A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E46F6A6C2C837CF0008EF23A /* SettingsVC.swift */,
+				E46F6A6D2C837CF0008EF23A /* SettingsVC.xib */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		E46F6A6B2C837CDB008EF23A /* Sheets */ = {
+			isa = PBXGroup;
+			children = (
+				E46F6A702C837CFA008EF23A /* SheetsVC.swift */,
+				E46F6A712C837CFA008EF23A /* SheetsVC.xib */,
+			);
+			path = Sheets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,10 +244,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E46F6A732C837CFA008EF23A /* SheetsVC.xib in Resources */,
 				E43A9BFC2C83746B00716208 /* LaunchScreen.storyboard in Resources */,
 				E43A9BF92C83746B00716208 /* Assets.xcassets in Resources */,
 				E43A9BF72C83746A00716208 /* Main.storyboard in Resources */,
 				E43A9C0B2C83775400716208 /* WriterVC.xib in Resources */,
+				E46F6A6F2C837CF0008EF23A /* SettingsVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +305,10 @@
 				E43A9BF42C83746A00716208 /* ViewController.swift in Sources */,
 				E43A9BF02C83746A00716208 /* AppDelegate.swift in Sources */,
 				E43A9BF22C83746A00716208 /* SceneDelegate.swift in Sources */,
+				E46F6A672C837A2A008EF23A /* TabBarController.swift in Sources */,
 				E43A9C0A2C83775400716208 /* WriterVC.swift in Sources */,
+				E46F6A6E2C837CF0008EF23A /* SettingsVC.swift in Sources */,
+				E46F6A722C837CFA008EF23A /* SheetsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +371,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -375,7 +434,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -415,7 +474,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.saibalajik.Shirusu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.saibalaji.Shirusu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -444,7 +503,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.saibalajik.Shirusu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.saibalaji.Shirusu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
