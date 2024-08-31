@@ -26,7 +26,18 @@ class TabBarController: UITabBarController {
     }
     
     func createVC(nibName: String,title: String,imageName: String) -> UIViewController{
-        let viewController = UIViewController(nibName: nibName, bundle: nil)
+        let viewController: UIViewController
+          switch nibName {
+          case "WriterVC":
+              viewController = WriterVC(nibName: nibName, bundle: nil)
+          case "SheetsVC":
+              viewController = SheetsVC(nibName: nibName, bundle: nil)
+          case "SettingsVC":
+              viewController = SettingsVC(nibName: nibName, bundle: nil)
+          default:
+              viewController = UIViewController(nibName: nibName, bundle: nil)
+          }
+        
         viewController.tabBarItem.title = title
         viewController.tabBarItem.image = UIImage(systemName: imageName)
         return viewController

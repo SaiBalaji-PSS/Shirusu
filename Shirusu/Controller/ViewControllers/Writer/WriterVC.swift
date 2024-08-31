@@ -9,6 +9,8 @@ import UIKit
 
 class WriterVC: UIViewController {
 
+    @IBOutlet weak var textEditor: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
