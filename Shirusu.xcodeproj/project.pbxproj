@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D60C60C53444D121654574A /* Pods_Shirusu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F114BEE045FF0A1E7E0A62CA /* Pods_Shirusu.framework */; };
 		E43A9BF02C83746A00716208 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43A9BEF2C83746A00716208 /* AppDelegate.swift */; };
 		E43A9BF22C83746A00716208 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43A9BF12C83746A00716208 /* SceneDelegate.swift */; };
 		E43A9BF42C83746A00716208 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43A9BF32C83746A00716208 /* ViewController.swift */; };
 		E43A9BF72C83746A00716208 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E43A9BF52C83746A00716208 /* Main.storyboard */; };
 		E43A9BF92C83746B00716208 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E43A9BF82C83746B00716208 /* Assets.xcassets */; };
 		E43A9BFC2C83746B00716208 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E43A9BFA2C83746B00716208 /* LaunchScreen.storyboard */; };
+		E43A9C0A2C83775400716208 /* WriterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43A9C082C83775400716208 /* WriterVC.swift */; };
+		E43A9C0B2C83775400716208 /* WriterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E43A9C092C83775400716208 /* WriterVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5AA00D37A00A92E8A55A6DA3 /* Pods-Shirusu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shirusu.release.xcconfig"; path = "Target Support Files/Pods-Shirusu/Pods-Shirusu.release.xcconfig"; sourceTree = "<group>"; };
+		CD74E5DF3DFECB3A1938D5A3 /* Pods-Shirusu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shirusu.debug.xcconfig"; path = "Target Support Files/Pods-Shirusu/Pods-Shirusu.debug.xcconfig"; sourceTree = "<group>"; };
 		E43A9BEC2C83746A00716208 /* Shirusu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shirusu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E43A9BEF2C83746A00716208 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E43A9BF12C83746A00716208 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +29,9 @@
 		E43A9BF82C83746B00716208 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E43A9BFB2C83746B00716208 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E43A9BFD2C83746B00716208 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E43A9C082C83775400716208 /* WriterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriterVC.swift; sourceTree = "<group>"; };
+		E43A9C092C83775400716208 /* WriterVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WriterVC.xib; sourceTree = "<group>"; };
+		F114BEE045FF0A1E7E0A62CA /* Pods_Shirusu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shirusu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +39,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D60C60C53444D121654574A /* Pods_Shirusu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31AAAC69548797E691BDA9ED /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CD74E5DF3DFECB3A1938D5A3 /* Pods-Shirusu.debug.xcconfig */,
+				5AA00D37A00A92E8A55A6DA3 /* Pods-Shirusu.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		52AB16A813EA20E5B78AD66C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F114BEE045FF0A1E7E0A62CA /* Pods_Shirusu.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E43A9BE32C83746A00716208 = {
 			isa = PBXGroup;
 			children = (
 				E43A9BEE2C83746A00716208 /* Shirusu */,
 				E43A9BED2C83746A00716208 /* Products */,
+				31AAAC69548797E691BDA9ED /* Pods */,
+				52AB16A813EA20E5B78AD66C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +85,10 @@
 		E43A9BEE2C83746A00716208 /* Shirusu */ = {
 			isa = PBXGroup;
 			children = (
+				E43A9C072C83770C00716208 /* ViewModel */,
+				E43A9C062C83770500716208 /* Controller */,
+				E43A9C052C8376FF00716208 /* View */,
+				E43A9C032C8376F600716208 /* Model */,
 				E43A9BEF2C83746A00716208 /* AppDelegate.swift */,
 				E43A9BF12C83746A00716208 /* SceneDelegate.swift */,
 				E43A9BF32C83746A00716208 /* ViewController.swift */,
@@ -67,6 +100,36 @@
 			path = Shirusu;
 			sourceTree = "<group>";
 		};
+		E43A9C032C8376F600716208 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E43A9C052C8376FF00716208 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E43A9C062C83770500716208 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E43A9C082C83775400716208 /* WriterVC.swift */,
+				E43A9C092C83775400716208 /* WriterVC.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E43A9C072C83770C00716208 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +137,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E43A9C002C83746B00716208 /* Build configuration list for PBXNativeTarget "Shirusu" */;
 			buildPhases = (
+				0B8B20BAC8756F5F2164CF0C /* [CP] Check Pods Manifest.lock */,
 				E43A9BE82C83746A00716208 /* Sources */,
 				E43A9BE92C83746A00716208 /* Frameworks */,
 				E43A9BEA2C83746A00716208 /* Resources */,
+				13947508DD5A5C7A6C7CFD02 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,10 +193,53 @@
 				E43A9BFC2C83746B00716208 /* LaunchScreen.storyboard in Resources */,
 				E43A9BF92C83746B00716208 /* Assets.xcassets in Resources */,
 				E43A9BF72C83746A00716208 /* Main.storyboard in Resources */,
+				E43A9C0B2C83775400716208 /* WriterVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0B8B20BAC8756F5F2164CF0C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Shirusu-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		13947508DD5A5C7A6C7CFD02 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Shirusu/Pods-Shirusu-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Shirusu/Pods-Shirusu-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Shirusu/Pods-Shirusu-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E43A9BE82C83746A00716208 /* Sources */ = {
@@ -141,6 +249,7 @@
 				E43A9BF42C83746A00716208 /* ViewController.swift in Sources */,
 				E43A9BF02C83746A00716208 /* AppDelegate.swift in Sources */,
 				E43A9BF22C83746A00716208 /* SceneDelegate.swift in Sources */,
+				E43A9C0A2C83775400716208 /* WriterVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +396,7 @@
 		};
 		E43A9C012C83746B00716208 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD74E5DF3DFECB3A1938D5A3 /* Pods-Shirusu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -315,6 +425,7 @@
 		};
 		E43A9C022C83746B00716208 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5AA00D37A00A92E8A55A6DA3 /* Pods-Shirusu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
