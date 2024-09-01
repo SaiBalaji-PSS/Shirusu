@@ -22,6 +22,8 @@ class WriterVC: UIViewController {
         // Do any additional setup after loading the view.
         self.configureTextView()
         self.setupTipViewPreference()
+        DatabaseService.shared.loadDB()
+        
     }
 
 
@@ -61,7 +63,7 @@ class WriterVC: UIViewController {
         return barItem
     }
     ///
-    ///This function is used to show the easy toop tip view below the rect of the selected text by creating a temporary view and adding the tip view inside the temp view 
+    ///This function is used to show the easy toop tip view below the rect of the selected text by creating a temporary view and adding the tip view inside the temp view
     ///- Parameters:
     ///     - text: A string for the Easy Tip View content
     ///     - selectedTextRect: A CGRect which represents the rectangular bounding box of the selected text
@@ -98,7 +100,7 @@ class WriterVC: UIViewController {
             case 1:
                 print("Paste")
             self.clipboardService.pasteText { textToBePasted in
-                if let (selectedText,selectedRange) = self.clipboardService.getTextInsideTheSelectedRange(textView: self.textEditor){
+                if let (_,selectedRange) = self.clipboardService.getTextInsideTheSelectedRange(textView: self.textEditor){
                     if let textToBePasted, textToBePasted.isEmpty == false{
                         self.textEditor.replace(selectedRange, withText: textToBePasted)
                     }
@@ -127,6 +129,35 @@ class WriterVC: UIViewController {
                 break
         }
     }
+    
+    func getWordMeaning(word: String,textRect: CGRect){
+        if word.containsKanji(){
+            DatabaseService.shared.getKanjiWordMeaning(word: word) { result , error  in
+                if error == nil, let result{
+                    DispatchQueue.main.async {
+                        self.showTipView(text: result, selectedTextRect: textRect)
+                    }
+                 
+                }
+                else{
+                    self.tipView?.dismiss()
+                }
+            }
+        }
+        else if word.containsHiragana(){
+            DatabaseService.shared.getKanaWordMeaning(word: word) { result , error  in
+                if error == nil, let result{
+                    DispatchQueue.main.async {
+                        self.showTipView(text: result, selectedTextRect: textRect)
+                    }
+                 
+                }
+                else{
+                    self.tipView?.dismiss()
+                }
+            }
+        }
+    }
 }
 
 
@@ -139,7 +170,14 @@ extension WriterVC: UITextViewDelegate{
             if let selectedText = textView.text(in: selectedRange), selectedText.isEmpty == false{
                 print(selectedText)
                 let selectedTextRect = textView.firstRect(for: selectedRange)
-                self.showTipView(text: selectedText, selectedTextRect: selectedTextRect)
+                if selectedText.containsKanji(){
+                    self.getWordMeaning(word: selectedText, textRect: selectedTextRect)
+                }
+                else if selectedText.containsHiragana(){
+                    self.getWordMeaning(word: selectedText, textRect: selectedTextRect)
+                }
+               
+                
             }
             else{
                 self.tipView?.dismiss()

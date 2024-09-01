@@ -1,16 +1,22 @@
 PODS:
   - EasyTipView (2.1.0)
+  - SQLite.swift (0.15.3):
+    - SQLite.swift/standard (= 0.15.3)
+  - SQLite.swift/standard (0.15.3)
 
 DEPENDENCIES:
   - EasyTipView (~> 2.1)
+  - SQLite.swift (~> 0.15.3)
 
 SPEC REPOS:
   trunk:
     - EasyTipView
+    - SQLite.swift
 
 SPEC CHECKSUMS:
   EasyTipView: a92b6edc377b81c5ac18e9fd35d5ee78e9409488
+  SQLite.swift: 8d054987f02728cc912b0eb5a9659650573a65a2
 
-PODFILE CHECKSUM: 838a42606ab204b242c311edea56d83a19771275
+PODFILE CHECKSUM: 26552ccd26d5e7d618c6b1b6f10b99d0ea2035f9
 
 COCOAPODS: 1.15.2
