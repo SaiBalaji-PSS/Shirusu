@@ -17,6 +17,7 @@
 		E43A9C0A2C83775400716208 /* WriterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43A9C082C83775400716208 /* WriterVC.swift */; };
 		E43A9C0B2C83775400716208 /* WriterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E43A9C092C83775400716208 /* WriterVC.xib */; };
 		E44B3A422C84097F00618393 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44B3A412C84097F00618393 /* CustomTextField.swift */; };
+		E44B3A452C8412E400618393 /* ClipBoardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44B3A442C8412E400618393 /* ClipBoardService.swift */; };
 		E46F6A672C837A2A008EF23A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F6A662C837A2A008EF23A /* TabBarController.swift */; };
 		E46F6A6E2C837CF0008EF23A /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F6A6C2C837CF0008EF23A /* SettingsVC.swift */; };
 		E46F6A6F2C837CF0008EF23A /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E46F6A6D2C837CF0008EF23A /* SettingsVC.xib */; };
@@ -38,6 +39,7 @@
 		E43A9C082C83775400716208 /* WriterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriterVC.swift; sourceTree = "<group>"; };
 		E43A9C092C83775400716208 /* WriterVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WriterVC.xib; sourceTree = "<group>"; };
 		E44B3A412C84097F00618393 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		E44B3A442C8412E400618393 /* ClipBoardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipBoardService.swift; sourceTree = "<group>"; };
 		E46F6A662C837A2A008EF23A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E46F6A6C2C837CF0008EF23A /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		E46F6A6D2C837CF0008EF23A /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		E43A9BEE2C83746A00716208 /* Shirusu */ = {
 			isa = PBXGroup;
 			children = (
+				E44B3A432C8412D600618393 /* Service */,
 				E43A9C072C83770C00716208 /* ViewModel */,
 				E43A9C062C83770500716208 /* Controller */,
 				E43A9C052C8376FF00716208 /* View */,
@@ -140,6 +143,14 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E44B3A432C8412D600618393 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E44B3A442C8412E400618393 /* ClipBoardService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		E46F6A652C837A0E008EF23A /* TabBar */ = {
@@ -305,6 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E44B3A452C8412E400618393 /* ClipBoardService.swift in Sources */,
 				E43A9BF42C83746A00716208 /* ViewController.swift in Sources */,
 				E43A9BF02C83746A00716208 /* AppDelegate.swift in Sources */,
 				E43A9BF22C83746A00716208 /* SceneDelegate.swift in Sources */,
