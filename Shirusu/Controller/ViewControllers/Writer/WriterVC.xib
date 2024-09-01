@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WriterVC" customModule="Shirusu" customModuleProvider="target">
             <connections>
+                <outlet property="bottomMenuView" destination="C71-K2-gzd" id="MUw-f7-y3G"/>
                 <outlet property="textEditor" destination="ScI-Cf-TA5" id="9sa-Qa-dUK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -19,23 +20,40 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ScI-Cf-TA5">
-                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ScI-Cf-TA5" customClass="CustomTextField" customModule="Shirusu" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="99" width="393" height="649"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <color key="textColor" systemColor="labelColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C71-K2-gzd">
+                    <rect key="frame" x="0.0" y="748" width="393" height="70"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="GAm-JU-ir0"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="C71-K2-gzd" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="4LI-gg-gnO"/>
                 <constraint firstItem="ScI-Cf-TA5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ELt-30-vUj"/>
-                <constraint firstItem="ScI-Cf-TA5" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="f02-C9-Dnv"/>
-                <constraint firstItem="ScI-Cf-TA5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="q7X-Ih-naY"/>
+                <constraint firstItem="C71-K2-gzd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Eau-3i-rDg"/>
+                <constraint firstItem="C71-K2-gzd" firstAttribute="top" secondItem="ScI-Cf-TA5" secondAttribute="bottom" id="Q7l-kn-XAM"/>
+                <constraint firstItem="C71-K2-gzd" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="QXE-Rx-xrJ"/>
+                <constraint firstItem="ScI-Cf-TA5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="q7X-Ih-naY"/>
                 <constraint firstItem="ScI-Cf-TA5" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="yx9-vo-jbr"/>
             </constraints>
             <point key="canvasLocation" x="55.725190839694655" y="19.718309859154932"/>
+        </view>
+        <view contentMode="scaleToFill" id="evn-cv-EHg">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <viewLayoutGuide key="safeArea" id="iY0-PW-l92"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <point key="canvasLocation" x="1233" y="-18"/>
         </view>
     </objects>
     <resources>
@@ -44,6 +62,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
