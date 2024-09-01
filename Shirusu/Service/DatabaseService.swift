@@ -26,6 +26,7 @@ extension DBError: LocalizedError{
 class DatabaseService{
     static var shared = DatabaseService()
     private var db: Connection?
+    
     private let kanaQuery = """
         SELECT entry.id AS entry_id,
                kana.value AS kana_value,
@@ -146,7 +147,7 @@ extension String{
         return false
     }
 
-    // Function to check if a string contains Kanji characters
+    
     func containsKanji() -> Bool {
         let kanjiPattern = "[\\u4E00-\\u9FAF]"
         let regex = try? NSRegularExpression(pattern: kanjiPattern)
@@ -155,5 +156,15 @@ extension String{
             return regex.firstMatch(in: self, options: [], range: range) != nil
         }
         return false
+    }
+    func containsKatakana() -> Bool {
+        // Regular expression for Katakana characters
+        let katakanaRegex = "[\\p{Katakana}]"
+        let regex = try? NSRegularExpression(pattern: katakanaRegex)
+        let range = NSRange(location: 0, length: self.utf16.count)
+        if let regex = regex {
+            return regex.firstMatch(in: self, options: [], range: range) != nil
+        }
+        return false 
     }
 }

@@ -130,7 +130,7 @@ class WriterVC: UIViewController {
                 break
         }
     }
-    
+    //Shows the tip view with the meaning from the database, hides the tip view when no text is selected
     func getWordMeaning(word: String,textRect: CGRect){
         if word.containsKanji(){
             DatabaseService.shared.getKanjiWordMeaning(word: word) { result , error  in
@@ -145,7 +145,7 @@ class WriterVC: UIViewController {
                 }
             }
         }
-        else if word.containsHiragana(){
+        else if word.containsHiragana() || word.containsKatakana(){
             DatabaseService.shared.getKanaWordMeaning(word: word) { result , error  in
                 if error == nil, let result{
                     DispatchQueue.main.async {
@@ -165,18 +165,13 @@ class WriterVC: UIViewController {
 
 //MARK: - UITextView Delegate Methods
 extension WriterVC: UITextViewDelegate{
-    //Shows the tip view when a text is selected, hides the tip view when no text is selected
+    //Get the meaning for the selected word from DB
     func textViewDidChangeSelection(_ textView: UITextView) {
         if let selectedRange = textView.selectedTextRange{
             if let selectedText = textView.text(in: selectedRange), selectedText.isEmpty == false{
                 print(selectedText)
                 let selectedTextRect = textView.firstRect(for: selectedRange)
-                if selectedText.containsKanji(){
-                    self.getWordMeaning(word: selectedText, textRect: selectedTextRect)
-                }
-                else if selectedText.containsHiragana(){
-                    self.getWordMeaning(word: selectedText, textRect: selectedTextRect)
-                }
+                self.getWordMeaning(word: selectedText, textRect: selectedTextRect)
                
                 
             }
