@@ -19,6 +19,7 @@ class TabBarController: UITabBarController {
     
     
     func createTabBar(){
+        tabBar.backgroundColor = UIColor.white
         let writerVC = self.createVC(nibName: "WriterVC", title: "Writer", imageName: "keyboard")
         let sheetsVC = self.createVC(nibName: "SheetsVC", title: "Sheets", imageName: "book.pages")
         let settingsVC = self.createVC(nibName: "SettingsVC", title: "Settings", imageName: "gear")

@@ -10,7 +10,8 @@ import EasyTipView
 
 class WriterVC: UIViewController {
     //MARK: - PROPERTIES
-    @IBOutlet weak var bottomMenuView: UIView!
+    
+    @IBOutlet weak var translateTextView: UITextView!
     @IBOutlet weak var textEditor: CustomTextField!
     private var tipView: EasyTipView?
     private var clipboardService = ClipBoardService()
@@ -72,7 +73,7 @@ class WriterVC: UIViewController {
     func showTipView(text: String,selectedTextRect: CGRect){
         tipView?.dismiss()
         tipView = EasyTipView(text: text)
-        let tempView = UIView(frame: CGRect(x: selectedTextRect.midX, y: selectedTextRect.maxY + 120, width: 1, height: 1))
+        let tempView = UIView(frame: CGRect(x: selectedTextRect.midX, y: selectedTextRect.maxY + 5, width: 1, height: 1))
         tempView.backgroundColor = UIColor.clear
         self.textEditor.superview?.addSubview(tempView)
         tipView?.show(forView: tempView)
