@@ -21,17 +21,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="igy-5P-p2z">
-                    <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                    <rect key="frame" x="0.0" y="111" width="393" height="741"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ScI-Cf-TA5" customClass="CustomTextField" customModule="Shirusu" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="396.66666666666669"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="370.66666666666669"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <color key="textColor" systemColor="labelColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="y3q-iu-xc7">
-                            <rect key="frame" x="0.0" y="396.66666666666674" width="393" height="396.33333333333326"/>
+                            <rect key="frame" x="0.0" y="370.66666666666674" width="393" height="370.33333333333326"/>
                             <color key="backgroundColor" red="0.89019607840000003" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="textColor" systemColor="labelColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -39,24 +39,73 @@
                         </textView>
                     </subviews>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MDa-4r-bh4">
+                    <rect key="frame" x="0.0" y="59" width="393" height="52"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="38" translatesAutoresizingMaskIntoConstraints="NO" id="Z6b-mT-E9M">
+                            <rect key="frame" x="8" y="9" width="225" height="34.333333333333336"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUL-ag-bPW">
+                                    <rect key="frame" x="0.0" y="0.0" width="49.666666666666664" height="34.333333333333336"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="arrow.turn.up.left" catalog="system"/>
+                                    <connections>
+                                        <action selector="undoBtnPressed:" destination="-1" eventType="touchUpInside" id="ZBD-st-Xy5"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5SB-Un-xYv">
+                                    <rect key="frame" x="87.666666666666671" y="0.0" width="49.666666666666671" height="34.333333333333336"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="arrow.turn.up.right" catalog="system"/>
+                                    <connections>
+                                        <action selector="redoBtnPressed:" destination="-1" eventType="touchUpInside" id="9Lf-Ez-f8z"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zI-Lc-PYR">
+                                    <rect key="frame" x="175.33333333333334" y="0.0" width="49.666666666666657" height="34.333333333333336"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="a.book.closed.ja" catalog="system"/>
+                                    <connections>
+                                        <action selector="jishoBtnPressed:" destination="-1" eventType="touchUpInside" id="Vp6-eC-9o6"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemPinkColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="52" id="3E7-21-eVs"/>
+                        <constraint firstItem="Z6b-mT-E9M" firstAttribute="leading" secondItem="MDa-4r-bh4" secondAttribute="leading" constant="8" id="BHR-es-7vl"/>
+                        <constraint firstItem="Z6b-mT-E9M" firstAttribute="centerY" secondItem="MDa-4r-bh4" secondAttribute="centerY" id="ZRW-7C-fdY"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="igy-5P-p2z" secondAttribute="bottom" id="A2C-Sm-Hxb"/>
+                <constraint firstItem="MDa-4r-bh4" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="BhM-C4-k0B"/>
+                <constraint firstItem="MDa-4r-bh4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="CLY-MO-ytu"/>
+                <constraint firstItem="igy-5P-p2z" firstAttribute="top" secondItem="MDa-4r-bh4" secondAttribute="bottom" id="IS0-l1-bpk"/>
                 <constraint firstItem="igy-5P-p2z" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Kqo-Jj-saJ"/>
+                <constraint firstItem="MDa-4r-bh4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="RBP-55-KwM"/>
                 <constraint firstItem="igy-5P-p2z" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="gZp-Bz-ukZ"/>
-                <constraint firstItem="igy-5P-p2z" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="tUx-UF-16d"/>
+                <constraint firstAttribute="bottom" secondItem="igy-5P-p2z" secondAttribute="bottom" id="vSY-Oh-zOz"/>
             </constraints>
             <point key="canvasLocation" x="55.725190839694655" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>
+        <image name="a.book.closed.ja" catalog="system" width="115" height="128"/>
+        <image name="arrow.turn.up.left" catalog="system" width="128" height="99"/>
+        <image name="arrow.turn.up.right" catalog="system" width="128" height="99"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

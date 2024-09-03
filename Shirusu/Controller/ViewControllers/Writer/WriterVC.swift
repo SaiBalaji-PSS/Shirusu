@@ -27,7 +27,24 @@ class WriterVC: UIViewController {
         
     }
 
-
+    @IBAction func undoBtnPressed(_ sender: Any) {
+        if let canUndo = textEditor.undoManager?.canUndo{
+            if canUndo{
+                textEditor.undoManager?.undo()
+            }
+        }
+    }
+    
+    @IBAction func redoBtnPressed(_ sender: Any) {
+        if let canRedo = textEditor.undoManager?.canRedo{
+            if canRedo{
+                textEditor.undoManager?.redo()
+            }
+        }
+    }
+    
+    @IBAction func jishoBtnPressed(_ sender: Any) {
+    }
     //Configure the textEditor, create and addd UIToolbar with custom options as text editor accessory view
     func configureTextView(){
         textEditor.backgroundColor = #colorLiteral(red: 0.9238191843, green: 0.9207934141, blue: 0.6188468337, alpha: 1)
@@ -142,6 +159,7 @@ class WriterVC: UIViewController {
                 }
                 else{
                     self.tipView?.dismiss()
+                    
                 }
             }
         }
