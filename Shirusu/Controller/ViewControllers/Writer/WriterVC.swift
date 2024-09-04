@@ -15,6 +15,7 @@ class WriterVC: UIViewController {
     @IBOutlet weak var textEditor: CustomTextField!
     private var tipView: EasyTipView?
     private var clipboardService = ClipBoardService()
+    private var selectedWord: String?
     
     //MARK: - LIFECYCLE METHODS
     override func viewDidLoad() {
@@ -44,6 +45,13 @@ class WriterVC: UIViewController {
     }
     
     @IBAction func jishoBtnPressed(_ sender: Any) {
+        if let selectedWord{
+            let jishoVC = JishoVC(nibName: "JishoVC", bundle: nil)
+            jishoVC.modalPresentationStyle = .fullScreen
+            jishoVC.word = selectedWord
+            self.present(jishoVC, animated: true)
+        }
+     
     }
     //Configure the textEditor, create and addd UIToolbar with custom options as text editor accessory view
     func configureTextView(){
@@ -189,11 +197,13 @@ extension WriterVC: UITextViewDelegate{
             if let selectedText = textView.text(in: selectedRange), selectedText.isEmpty == false{
                 print(selectedText)
                 let selectedTextRect = textView.firstRect(for: selectedRange)
+                self.selectedWord = selectedText
                 self.getWordMeaning(word: selectedText, textRect: selectedTextRect)
                
                 
             }
             else{
+                self.selectedWord = nil 
                 self.tipView?.dismiss()
             }
         }
