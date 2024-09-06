@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JishoVC" customModule="Shirusu" customModuleProvider="target">
             <connections>
+                <outlet property="loadingProgressBar" destination="LVV-zV-8Wh" id="a4k-Uj-C2b"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="webView" destination="RLG-GA-EpL" id="gxx-YI-EjO"/>
             </connections>
@@ -20,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RLG-GA-EpL">
-                    <rect key="frame" x="0.0" y="111" width="393" height="707"/>
+                    <rect key="frame" x="0.0" y="111" width="393" height="687"/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <wkWebViewConfiguration key="configuration">
                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -42,31 +43,62 @@
                                 <action selector="backBtnPressed:" destination="-1" eventType="touchUpInside" id="3At-Po-oIz"/>
                             </connections>
                         </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="i7Z-Br-c92">
+                            <rect key="frame" x="281.66666666666669" y="9" width="103.33333333333331" height="34.333333333333336"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGo-Ie-dBN">
+                                    <rect key="frame" x="0.0" y="0.0" width="49.666666666666664" height="34.333333333333336"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="arrow.uturn.left" catalog="system"/>
+                                    <connections>
+                                        <action selector="backwardBtnPressed:" destination="-1" eventType="touchUpInside" id="1F7-Ku-FtD"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Yc-3d-zHj">
+                                    <rect key="frame" x="53.666666666666629" y="0.0" width="49.666666666666657" height="34.333333333333336"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="arrow.uturn.right" catalog="system"/>
+                                    <connections>
+                                        <action selector="forwardBtnPressed:" destination="-1" eventType="touchUpInside" id="Umw-re-4ec"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="i7Z-Br-c92" firstAttribute="centerY" secondItem="8Qe-Kl-rFb" secondAttribute="centerY" id="0NC-34-QUl"/>
                         <constraint firstItem="GL6-QH-gTh" firstAttribute="centerY" secondItem="8Qe-Kl-rFb" secondAttribute="centerY" id="JkQ-yc-cCf"/>
+                        <constraint firstAttribute="trailing" secondItem="i7Z-Br-c92" secondAttribute="trailing" constant="8" id="anh-De-m38"/>
                         <constraint firstAttribute="height" constant="52" id="bYK-Z1-4WC"/>
                         <constraint firstItem="GL6-QH-gTh" firstAttribute="leading" secondItem="8Qe-Kl-rFb" secondAttribute="leading" constant="8" id="c8c-9t-Rfv"/>
                     </constraints>
                 </view>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LVV-zV-8Wh">
+                    <rect key="frame" x="8" y="806" width="377" height="4"/>
+                </progressView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="LVV-zV-8Wh" secondAttribute="bottom" constant="8" id="3fm-9z-FaF"/>
                 <constraint firstItem="8Qe-Kl-rFb" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="4hh-0A-eur"/>
+                <constraint firstItem="LVV-zV-8Wh" firstAttribute="top" secondItem="RLG-GA-EpL" secondAttribute="bottom" constant="8" id="7YC-zZ-AXg"/>
                 <constraint firstItem="RLG-GA-EpL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="C51-gz-jbc"/>
                 <constraint firstItem="8Qe-Kl-rFb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="JP3-os-605"/>
+                <constraint firstItem="LVV-zV-8Wh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="JpW-82-NJR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="RLG-GA-EpL" secondAttribute="trailing" id="M6C-zS-egF"/>
                 <constraint firstItem="RLG-GA-EpL" firstAttribute="top" secondItem="8Qe-Kl-rFb" secondAttribute="bottom" id="bVt-Ez-Yo2"/>
                 <constraint firstItem="8Qe-Kl-rFb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="f94-0c-zUB"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="RLG-GA-EpL" secondAttribute="bottom" id="j71-4k-cOG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LVV-zV-8Wh" secondAttribute="trailing" constant="8" id="jkJ-Vs-zWy"/>
             </constraints>
             <point key="canvasLocation" x="139.69465648854961" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="95"/>
+        <image name="arrow.uturn.left" catalog="system" width="128" height="113"/>
+        <image name="arrow.uturn.right" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

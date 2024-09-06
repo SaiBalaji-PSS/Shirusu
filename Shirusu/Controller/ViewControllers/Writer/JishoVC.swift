@@ -10,6 +10,7 @@ import WebKit
 
 class JishoVC: UIViewController {
 
+    @IBOutlet weak var loadingProgressBar: UIProgressView!
     @IBOutlet weak var webView: WKWebView!
     private let BASE_URL = "https://jisho.org/search/"
     var word: String?
@@ -25,6 +26,7 @@ class JishoVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress),options: .new, context: nil)
        
     }
 
@@ -32,5 +34,24 @@ class JishoVC: UIViewController {
         self.dismiss(animated: true)
     }
     
+    @IBAction func forwardBtnPressed(_ sender: Any) {
+        if self.webView.canGoForward{
+            self.webView.goForward()
+        }
+    }
+    
+    
+    @IBAction func backwardBtnPressed(_ sender: Any) {
+        if self.webView.canGoBack{
+            self.webView.goBack()
+            
+        }
+    }
+    
+    override  func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "estimatedProgress"{
+            loadingProgressBar.progress = Float(webView.estimatedProgress)
+        }
+    }
     
 }
