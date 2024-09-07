@@ -57,6 +57,7 @@ class WriterVC: UIViewController {
     
     @IBAction func searchBtnPressed(_ sender: Any) {
         let searchVC = WordSearchVC(nibName: "WordSearchVC", bundle: nil)
+        searchVC.delegate = self
         searchVC.modalTransitionStyle = .flipHorizontal
         searchVC.modalPresentationStyle = .fullScreen
         self.present(searchVC, animated: true)
@@ -222,4 +223,10 @@ extension WriterVC: UITextViewDelegate{
         }
     }
     
+}
+
+extension WriterVC: WordSearchVCDelegate{
+    func didSelectWord(selectedWord: WordSearchModel) {
+        self.textEditor.text.append("\(selectedWord.kanji)")
+    }
 }

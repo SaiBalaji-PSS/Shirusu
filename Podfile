@@ -8,4 +8,5 @@ target 'Shirusu' do
   # Pods for Shirusu
   pod 'EasyTipView', '~> 2.1'
    pod 'SQLite.swift', '~> 0.15.3'
+   pod 'DropDown', '2.3.13'
 end
