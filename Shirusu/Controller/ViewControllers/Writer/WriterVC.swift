@@ -8,7 +8,7 @@
 import UIKit
 import EasyTipView
 
-class WriterVC: UIViewController {
+class WriterVC: BaseVC {
     //MARK: - PROPERTIES
     
     @IBOutlet weak var translateTextView: UITextView!
@@ -25,6 +25,7 @@ class WriterVC: UIViewController {
         self.configureTextView()
         self.setupTipViewPreference()
         DatabaseService.shared.loadDB()
+        self.setUpStatusBarColor()
         
     }
 

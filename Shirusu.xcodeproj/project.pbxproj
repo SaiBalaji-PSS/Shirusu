@@ -27,6 +27,7 @@
 		E46967BC2C8C28500066F125 /* CustomSearchTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = E46967BB2C8C28500066F125 /* CustomSearchTextField.xib */; };
 		E46967C02C8C32970066F125 /* WordSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46967BE2C8C32970066F125 /* WordSearchCell.swift */; };
 		E46967C12C8C32970066F125 /* WordSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E46967BF2C8C32970066F125 /* WordSearchCell.xib */; };
+		E46967C32C8C6D5F0066F125 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46967C22C8C6D5F0066F125 /* BaseVC.swift */; };
 		E46F6A672C837A2A008EF23A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F6A662C837A2A008EF23A /* TabBarController.swift */; };
 		E46F6A6E2C837CF0008EF23A /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F6A6C2C837CF0008EF23A /* SettingsVC.swift */; };
 		E46F6A6F2C837CF0008EF23A /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E46F6A6D2C837CF0008EF23A /* SettingsVC.xib */; };
@@ -60,6 +61,7 @@
 		E46967BB2C8C28500066F125 /* CustomSearchTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSearchTextField.xib; sourceTree = "<group>"; };
 		E46967BE2C8C32970066F125 /* WordSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSearchCell.swift; sourceTree = "<group>"; };
 		E46967BF2C8C32970066F125 /* WordSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordSearchCell.xib; sourceTree = "<group>"; };
+		E46967C22C8C6D5F0066F125 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		E46F6A662C837A2A008EF23A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E46F6A6C2C837CF0008EF23A /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		E46F6A6D2C837CF0008EF23A /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				E46F6A662C837A2A008EF23A /* TabBarController.swift */,
+				E46967C22C8C6D5F0066F125 /* BaseVC.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				E46967B82C8C24E40066F125 /* WordSearchModel.swift in Sources */,
 				E46967C02C8C32970066F125 /* WordSearchCell.swift in Sources */,
 				E4CD34452C847FF000A1ED4D /* DatabaseService.swift in Sources */,
+				E46967C32C8C6D5F0066F125 /* BaseVC.swift in Sources */,
 				E46967BA2C8C283F0066F125 /* CustomSearchTextField.swift in Sources */,
 				E43A9C0A2C83775400716208 /* WriterVC.swift in Sources */,
 				E46F6A6E2C837CF0008EF23A /* SettingsVC.swift in Sources */,
@@ -535,7 +539,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -545,9 +549,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.saibalaji.Shirusu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -565,7 +572,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -575,9 +582,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.saibalaji.Shirusu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

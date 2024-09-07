@@ -12,7 +12,7 @@ protocol WordSearchVCDelegate: AnyObject{
     func didSelectWord(selectedWord: WordSearchModel)
     
 }
-class WordSearchVC: UIViewController {
+class WordSearchVC: BaseVC {
     weak var delegate: WordSearchVCDelegate?
     let dropDown = DropDown()
     @IBOutlet weak var customSearchBar: CustomSearchTextField!
