@@ -65,6 +65,20 @@ class DatabaseService{
         GROUP BY
             entry.id, kanji.value LIMIT 1;
         """
+    private let wordSearchQuery = """
+SELECT
+    k.value AS kanji,
+    ka.value AS kana,
+    d.value AS english_meaning,
+    pos.value AS part_of_speech
+FROM entry e
+JOIN kanji k ON e.id = k.entry_id
+JOIN kana ka ON e.id = ka.entry_id
+JOIN sense s ON e.id = s.entry_id
+JOIN definition d ON s.id = d.sense_id
+LEFT JOIN part_of_speech pos ON s.id = pos.sense_id
+WHERE d.value = ?;
+"""
     func loadDB(){
         if let path = Bundle.main.path(forResource: "JMdict_e", ofType: "db"){
             do{
@@ -130,6 +144,28 @@ class DatabaseService{
             }
         }
         catch{
+            onCompletion(nil,error)
+        }
+    }
+    
+    func getWordList(searchTerm: String,onCompletion:@escaping([WordSearchModel]?,Error?)->(Void)){
+        do{
+            if let db{
+                var result = [WordSearchModel]()
+                let statement = try db.prepare(wordSearchQuery)
+                for row in try statement.run(searchTerm){
+                    let kanji = row[0] as? String ?? ""
+                    let kana = row[1] as? String ?? ""
+                    let englishMeaning = row[2] as? String ?? ""
+                    let partOfSpeech = row[3] as? String ?? ""
+                    result.append(WordSearchModel(kanji: kanji, kana: kana, meaning: englishMeaning, partOfSpeech: partOfSpeech))
+                }
+                onCompletion(result,nil)
+                
+            }
+        }
+        catch{
+            print(error)
             onCompletion(nil,error)
         }
     }

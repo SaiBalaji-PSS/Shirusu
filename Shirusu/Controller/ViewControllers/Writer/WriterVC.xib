@@ -71,12 +71,26 @@
                                 </button>
                             </subviews>
                         </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ro-MI-xbE">
+                            <rect key="frame" x="335" y="8.6666666666666714" width="50" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="DUM-my-usx"/>
+                                <constraint firstAttribute="width" constant="50" id="cga-su-rzN"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system"/>
+                            <connections>
+                                <action selector="searchBtnPressed:" destination="-1" eventType="touchUpInside" id="ifh-P9-TcG"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemPinkColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="52" id="3E7-21-eVs"/>
                         <constraint firstItem="Z6b-mT-E9M" firstAttribute="leading" secondItem="MDa-4r-bh4" secondAttribute="leading" constant="8" id="BHR-es-7vl"/>
+                        <constraint firstItem="7Ro-MI-xbE" firstAttribute="centerY" secondItem="MDa-4r-bh4" secondAttribute="centerY" id="Tpb-I9-dtY"/>
                         <constraint firstItem="Z6b-mT-E9M" firstAttribute="centerY" secondItem="MDa-4r-bh4" secondAttribute="centerY" id="ZRW-7C-fdY"/>
+                        <constraint firstAttribute="trailing" secondItem="7Ro-MI-xbE" secondAttribute="trailing" constant="8" id="Zya-tF-0Yb"/>
                     </constraints>
                 </view>
             </subviews>
@@ -98,6 +112,7 @@
         <image name="a.book.closed.ja" catalog="system" width="115" height="128"/>
         <image name="arrow.turn.up.left" catalog="system" width="128" height="99"/>
         <image name="arrow.turn.up.right" catalog="system" width="128" height="99"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -105,7 +120,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -53,6 +53,19 @@ class WriterVC: UIViewController {
         }
      
     }
+    
+    
+    @IBAction func searchBtnPressed(_ sender: Any) {
+        let searchVC = WordSearchVC(nibName: "WordSearchVC", bundle: nil)
+        searchVC.modalTransitionStyle = .flipHorizontal
+        searchVC.modalPresentationStyle = .fullScreen
+        self.present(searchVC, animated: true)
+    }
+    
+    
+    
+    
+    
     //Configure the textEditor, create and addd UIToolbar with custom options as text editor accessory view
     func configureTextView(){
         textEditor.backgroundColor = #colorLiteral(red: 0.9238191843, green: 0.9207934141, blue: 0.6188468337, alpha: 1)
