@@ -69,9 +69,11 @@ class WriterVC: UIViewController {
     
     //Configure the textEditor, create and addd UIToolbar with custom options as text editor accessory view
     func configureTextView(){
-        textEditor.backgroundColor = #colorLiteral(red: 0.9238191843, green: 0.9207934141, blue: 0.6188468337, alpha: 1)
+        //textEditor.backgroundColor = #colorLiteral(red: 0.9238191843, green: 0.9207934141, blue: 0.6188468337, alpha: 1)
         textEditor.textColor = UIColor.black
         textEditor.delegate = self
+        textEditor.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 0)
+
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 60))
        
         let flexibleSpace = UIBarButtonItem(systemItem: .flexibleSpace)
@@ -84,7 +86,7 @@ class WriterVC: UIViewController {
     func setupTipViewPreference(){
         var prefrence = EasyTipView.Preferences()
         prefrence.drawing.foregroundColor = UIColor.white
-        prefrence.drawing.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+        prefrence.drawing.backgroundColor = #colorLiteral(red: 0.737254902, green: 0, blue: 0.1764705882, alpha: 1)
         prefrence.drawing.arrowPosition = .top
         EasyTipView.globalPreferences = prefrence
     }

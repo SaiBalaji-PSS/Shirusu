@@ -43,7 +43,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemPinkColor"/>
+                            <color key="backgroundColor" red="0.73725490199999999" green="0.0" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="dJF-OY-W5p"/>
                                 <constraint firstAttribute="width" constant="50" id="dzP-Xh-Ytl"/>
@@ -73,6 +73,7 @@
                                 <constraint firstAttribute="height" constant="45" id="J93-TG-p5j"/>
                                 <constraint firstAttribute="width" constant="48" id="djK-mN-fRB"/>
                             </constraints>
+                            <color key="tintColor" red="0.73725490199999999" green="0.0" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="chevron.down" catalog="system"/>
                             <connections>
@@ -80,7 +81,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="55" id="ZpD-Im-pph"/>
                         <constraint firstItem="CxD-d6-Q9j" firstAttribute="leading" secondItem="6bc-MF-RxK" secondAttribute="leading" constant="8" id="bBu-VH-R6R"/>
@@ -121,8 +122,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
