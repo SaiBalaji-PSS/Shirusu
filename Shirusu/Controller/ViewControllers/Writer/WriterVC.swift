@@ -12,12 +12,13 @@ class WriterVC: BaseVC {
     //MARK: - PROPERTIES
     
 
+    @IBOutlet weak var bottomContraint: NSLayoutConstraint!
     @IBOutlet weak var textEditor: CustomTextField!
     private var tipView: EasyTipView?
     private var clipboardService = ClipBoardService()
     private var selectedWord: String?
     private var documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.text])
-    
+    private var isSelectModeEnalbed = false
     //MARK: - LIFECYCLE METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +28,34 @@ class WriterVC: BaseVC {
         self.setupTipViewPreference()
         DatabaseService.shared.loadDB()
         self.setUpStatusBarColor()
-    
+        self.setupKeyboardObservers()
         
     }
+    
+    func setupKeyboardObservers(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        // Get the userInfo dictionary from the notification
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+
+        let keyboardHeight = keyboardFrame.height
+        print("Keyboard height: \(keyboardHeight)")
+             self.bottomContraint.constant = -(keyboardHeight - 50)
+        
+        
+    }
+    @objc func keyboardWillHide(_ notification: Notification) {
+        // Reset any layout changes or content insets here if needed
+        self.bottomContraint.constant = 0.0
+    }
+    
+    
 
     @IBAction func undoBtnPressed(_ sender: Any) {
 
@@ -40,13 +66,16 @@ class WriterVC: BaseVC {
         }
     }
     
-    @IBAction func redoBtnPressed(_ sender: Any) {
-        if let canRedo = textEditor.undoManager?.canRedo{
-            if canRedo{
-                textEditor.undoManager?.redo()
-            }
-        }
+    @IBAction func addToListBtnPressed(_ sender: Any) {
+        print(self.selectedWord)
     }
+    //    @IBAction func redoBtnPressed(_ sender: Any) {
+//        if let canRedo = textEditor.undoManager?.canRedo{
+//            if canRedo{
+//                textEditor.undoManager?.redo()
+//            }
+//        }
+//    }
     
     @IBAction func jishoBtnPressed(_ sender: Any) {
         if let selectedWord{
@@ -75,6 +104,26 @@ class WriterVC: BaseVC {
     }
     
     
+    @IBAction func selectModeBtnPressed(_ sender: UIButton) {
+        self.isSelectModeEnalbed.toggle()
+        if isSelectModeEnalbed{
+            self.view.endEditing(true)
+            self.textEditor.isEditable = false
+            self.textEditor.isSelectable = true
+           
+        }
+        else{
+           // self.textEditor.resignFirstResponder()
+            self.tipView?.dismiss()
+            self.selectedWord = nil
+            self.textEditor.isEditable = true
+            self.textEditor.isSelectable = true
+        }
+        
+       
+       // self.bottomContraint.constant = - (UIScreen.main.bounds.size.height / 2.0)
+        
+    }
     
     @IBAction func fileOpenBtnPressed(_ sender: Any) {
         documentPicker.delegate = self
@@ -130,8 +179,11 @@ class WriterVC: BaseVC {
     /// - Authors: Sai Balaji K
     func showTipView(text: String,selectedTextRect: CGRect){
         tipView?.dismiss()
+        
+       
         tipView = EasyTipView(text: text)
-        let tempView = UIView(frame: CGRect(x: selectedTextRect.midX, y: selectedTextRect.maxY + 100, width: 1, height: 1))
+        let convertedRect = self.textEditor.convert(selectedTextRect, to: self.textEditor.superview)
+        let tempView = UIView(frame: CGRect(x: convertedRect.midX, y: convertedRect.maxY + 5, width: 1, height: 1))
         tempView.backgroundColor = UIColor.clear
         self.textEditor.superview?.addSubview(tempView)
         tipView?.show(forView: tempView)
@@ -211,6 +263,7 @@ class WriterVC: BaseVC {
                 }
                 else{
                     self.tipView?.dismiss()
+                    self.selectedWord = nil
                     
                 }
             }
@@ -225,6 +278,7 @@ class WriterVC: BaseVC {
                 }
                 else{
                     self.tipView?.dismiss()
+                    self.selectedWord = nil
                 }
             }
         }
@@ -238,17 +292,19 @@ extension WriterVC: UITextViewDelegate{
     //Get the meaning for the selected word from DB
     func textViewDidChangeSelection(_ textView: UITextView) {
         if let selectedRange = textView.selectedTextRange{
-            if let selectedText = textView.text(in: selectedRange), selectedText.isEmpty == false{
-                print(selectedText)
-                let selectedTextRect = textView.firstRect(for: selectedRange)
-                self.selectedWord = selectedText
-                self.getWordMeaning(word: selectedText, textRect: selectedTextRect)
-               
-                
-            }
-            else{
-                self.selectedWord = nil 
-                self.tipView?.dismiss()
+            if isSelectModeEnalbed == true{
+                if let selectedText = textView.text(in: selectedRange), selectedText.isEmpty == false{
+                    print(selectedText)
+                    let selectedTextRect = textView.firstRect(for: selectedRange)
+                    self.selectedWord = selectedText
+                    self.getWordMeaning(word: selectedText, textRect: selectedTextRect)
+                    
+                    
+                }
+                else{
+                    self.selectedWord = nil
+                    self.tipView?.dismiss()
+                }
             }
         }
     }
