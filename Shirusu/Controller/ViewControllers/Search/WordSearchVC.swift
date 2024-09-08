@@ -23,9 +23,13 @@ class WordSearchVC: BaseVC {
 
     @IBOutlet weak var tableView: UITableView!
     private var wordList = [WordSearchModel]()
-    private var wordTypes = ["Noun","Godan","Ichidan","Adjective","Pronoun","Irregular verb"]
+    private var wordTypes = ["Noun","Godan","Ichidan","Adjective","Pronoun"]
     private var selectedWordType: String = "Noun"
     
+    override func loadView() {
+        super.loadView()
+        self.setUpStatusBarColor()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,7 +40,8 @@ class WordSearchVC: BaseVC {
     
     func configureUI(){
 //        self.searchBar.delegate = self
-        self.customSearchBar.searchTextField.delegate = self 
+      
+        self.customSearchBar.searchTextField.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.customSearchBar.delegate = self
@@ -58,6 +63,8 @@ class WordSearchVC: BaseVC {
           }
         
     }
+    
+    
     
     
     
@@ -128,6 +135,7 @@ extension WordSearchVC: UITextFieldDelegate{
             }
             self.getWordMeaningWithPartsOfSpeech(searchTerm: word, partsOfSpeech: self.selectedWordType.lowercased())
         }
+        self.view.endEditing(true)
        
         return true
     }

@@ -33,12 +33,19 @@ class CustomSearchTextField: UIView {
         self.searchTextField.layer.borderColor = UIColor.darkGray.cgColor
         self.searchTextField.layer.borderWidth = 1
         self.searchTextField.setLeftPaddingPoints(8)
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: 40))
+        toolBar.items = [UIBarButtonItem(image: UIImage(systemName: "keyboard.chevron.compact.down"), style: .plain, target: self, action: #selector(dismissKeyboard))]
+        self.searchTextField.inputAccessoryView = toolBar
         
     }
     
     
     @IBAction func searchBtnPressed(_ sender: UIButton) {
         self.delegate?.didPressSearchButton(text: self.searchTextField.text)
+    }
+    
+    @objc func dismissKeyboard(){
+        self.endEditing(true)
     }
     
 }
