@@ -21,15 +21,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ceo-Tx-5Xq">
-                    <rect key="frame" x="0.0" y="121" width="393" height="697"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <rect key="frame" x="0.0" y="116" width="393" height="702"/>
+                    <color key="backgroundColor" red="0.85882352939999995" green="0.84313725490000002" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <color key="textColor" systemColor="labelColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0n3-VF-gSz">
-                    <rect key="frame" x="0.0" y="59" width="393" height="62"/>
+                    <rect key="frame" x="0.0" y="54" width="393" height="62"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gk3-Zw-v10">
                             <rect key="frame" x="8" y="13.666666666666671" width="50" height="35"/>
@@ -69,7 +69,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ceo-Tx-5Xq" secondAttribute="trailing" id="OXo-k7-Rll"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0n3-VF-gSz" secondAttribute="trailing" id="Obx-dP-7Ha"/>
                 <constraint firstItem="Ceo-Tx-5Xq" firstAttribute="top" secondItem="0n3-VF-gSz" secondAttribute="bottom" id="RM9-9t-Nfc"/>
-                <constraint firstItem="0n3-VF-gSz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ccN-b1-Fh3"/>
+                <constraint firstItem="0n3-VF-gSz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="-5" id="ccN-b1-Fh3"/>
                 <constraint firstItem="0n3-VF-gSz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xqQ-D5-BeR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ceo-Tx-5Xq" secondAttribute="bottom" id="zxl-T2-6z3"/>
             </constraints>
