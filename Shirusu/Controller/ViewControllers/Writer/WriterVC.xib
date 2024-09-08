@@ -29,11 +29,11 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MDa-4r-bh4">
                     <rect key="frame" x="0.0" y="47" width="393" height="62"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="38" translatesAutoresizingMaskIntoConstraints="NO" id="Z6b-mT-E9M">
-                            <rect key="frame" x="40.333333333333343" y="14" width="312.66666666666663" height="34.333333333333336"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="Z6b-mT-E9M">
+                            <rect key="frame" x="3" y="14" width="387" height="34.333333333333336"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUL-ag-bPW">
-                                    <rect key="frame" x="0.0" y="0.0" width="49.666666666666664" height="34.333333333333336"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="53.666666666666664" height="34.333333333333336"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="arrow.turn.up.left" catalog="system"/>
@@ -42,7 +42,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5SB-Un-xYv">
-                                    <rect key="frame" x="87.666666666666657" y="0.0" width="49.666666666666657" height="34.333333333333336"/>
+                                    <rect key="frame" x="66.666666666666671" y="0.0" width="53.666666666666671" height="34.333333333333336"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="arrow.turn.up.right" catalog="system"/>
@@ -51,7 +51,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zI-Lc-PYR">
-                                    <rect key="frame" x="175.33333333333331" y="0.0" width="49.666666666666657" height="34.333333333333336"/>
+                                    <rect key="frame" x="133.33333333333334" y="0.0" width="53.666666666666657" height="34.333333333333336"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="a.book.closed.ja" catalog="system"/>
@@ -60,12 +60,31 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ro-MI-xbE">
-                                    <rect key="frame" x="263" y="0.0" width="49.666666666666686" height="34.333333333333336"/>
+                                    <rect key="frame" x="200" y="0.0" width="53.666666666666657" height="34.333333333333336"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system"/>
                                     <connections>
                                         <action selector="searchBtnPressed:" destination="-1" eventType="touchUpInside" id="ifh-P9-TcG"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsd-Gv-cHL">
+                                    <rect key="frame" x="266.66666666666669" y="0.0" width="53.666666666666686" height="34.333333333333336"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.down" catalog="system"/>
+                                    <connections>
+                                        <action selector="saveBtnPressed:" destination="-1" eventType="touchUpInside" id="6lB-WA-iLN"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xo3-2w-0NL">
+                                    <rect key="frame" x="333.33333333333331" y="0.0" width="53.666666666666686" height="34.333333333333336"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="folder.badge.plus" catalog="system"/>
+                                    <connections>
+                                        <action selector="fileOpenBtnPressed:" destination="-1" eventType="touchUpInside" id="Vu6-PH-Flq"/>
+                                        <action selector="saveBtnPressed:" destination="-1" eventType="touchUpInside" id="xnR-nl-alY"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -97,7 +116,9 @@
         <image name="a.book.closed.ja" catalog="system" width="115" height="128"/>
         <image name="arrow.turn.up.left" catalog="system" width="128" height="99"/>
         <image name="arrow.turn.up.right" catalog="system" width="128" height="99"/>
+        <image name="folder.badge.plus" catalog="system" width="128" height="93"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="square.and.arrow.down" catalog="system" width="112" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

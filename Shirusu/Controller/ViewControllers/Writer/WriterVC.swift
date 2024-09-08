@@ -11,11 +11,12 @@ import EasyTipView
 class WriterVC: BaseVC {
     //MARK: - PROPERTIES
     
-    @IBOutlet weak var translateTextView: UITextView!
+
     @IBOutlet weak var textEditor: CustomTextField!
     private var tipView: EasyTipView?
     private var clipboardService = ClipBoardService()
     private var selectedWord: String?
+    private var documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.text])
     
     //MARK: - LIFECYCLE METHODS
     override func viewDidLoad() {
@@ -55,6 +56,13 @@ class WriterVC: BaseVC {
      
     }
     
+    @IBAction func saveBtnPressed(_ sender: Any) {
+        let saveVC = SaveDialogBoxVC(nibName: "SaveDialogBoxVC", bundle: nil)
+        saveVC.modalPresentationStyle = .overCurrentContext
+        saveVC.modalTransitionStyle = .crossDissolve
+        saveVC.delegate = self
+        self.present(saveVC, animated: true)
+    }
     
     @IBAction func searchBtnPressed(_ sender: Any) {
         let searchVC = WordSearchVC(nibName: "WordSearchVC", bundle: nil)
@@ -66,6 +74,12 @@ class WriterVC: BaseVC {
     
     
     
+    @IBAction func fileOpenBtnPressed(_ sender: Any) {
+        documentPicker.delegate = self
+        documentPicker.modalPresentationStyle = .fullScreen
+        documentPicker.allowsMultipleSelection = false
+        self.present(documentPicker, animated: true)
+    }
     
     
     //Configure the textEditor, create and addd UIToolbar with custom options as text editor accessory view
@@ -115,7 +129,7 @@ class WriterVC: BaseVC {
     func showTipView(text: String,selectedTextRect: CGRect){
         tipView?.dismiss()
         tipView = EasyTipView(text: text)
-        let tempView = UIView(frame: CGRect(x: selectedTextRect.midX, y: selectedTextRect.maxY + 5, width: 1, height: 1))
+        let tempView = UIView(frame: CGRect(x: selectedTextRect.midX, y: selectedTextRect.maxY + 100, width: 1, height: 1))
         tempView.backgroundColor = UIColor.clear
         self.textEditor.superview?.addSubview(tempView)
         tipView?.show(forView: tempView)
@@ -170,6 +184,16 @@ class WriterVC: BaseVC {
                 break
            default:
                 break
+        }
+    }
+    
+    func readTheContentOfTextFile(fileURL: URL){
+        do{
+            let content = try Data(contentsOf: fileURL)
+            self.textEditor.text = String(data: content, encoding: .utf8)
+        }
+        catch{
+            print(error)
         }
     }
     //Shows the tip view with the meaning from the database, hides the tip view when no text is selected
@@ -231,5 +255,35 @@ extension WriterVC: UITextViewDelegate{
 extension WriterVC: WordSearchVCDelegate{
     func didSelectWord(selectedWord: WordSearchModel) {
         self.textEditor.text.append("\(selectedWord.kanji)")
+    }
+}
+
+
+
+extension WriterVC: SaveDialogBoxDelegate{
+    func saveBtnPressed(fileName: String?) {
+        print(fileName)
+        if let fileName, let content = textEditor.text, content.isEmpty == false{
+            FileManagerService.shared.saveFile(fileName: fileName, content: content) { error  in
+                if let error{
+                    print(error)
+                }
+            }
+        }
+       
+    }
+    func cancelBtnPressed() {
+        
+    }
+}
+
+extension WriterVC: UIDocumentPickerDelegate{
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        if let selectedFileURL = urls.first{
+            self.readTheContentOfTextFile(fileURL: selectedFileURL)
+        }
+    }
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        self.dismiss(animated: true)
     }
 }

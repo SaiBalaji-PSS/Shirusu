@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3D60C60C53444D121654574A /* Pods_Shirusu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F114BEE045FF0A1E7E0A62CA /* Pods_Shirusu.framework */; };
+		E400EE692C8C9B1200F5FFB2 /* SaveDialogBoxVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E400EE672C8C9B1200F5FFB2 /* SaveDialogBoxVC.swift */; };
+		E400EE6A2C8C9B1200F5FFB2 /* SaveDialogBoxVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E400EE682C8C9B1200F5FFB2 /* SaveDialogBoxVC.xib */; };
+		E4064AF92C8D9FC000305EA6 /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4064AF82C8D9FC000305EA6 /* FileManagerService.swift */; };
 		E43A9BF02C83746A00716208 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43A9BEF2C83746A00716208 /* AppDelegate.swift */; };
 		E43A9BF22C83746A00716208 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43A9BF12C83746A00716208 /* SceneDelegate.swift */; };
 		E43A9BF42C83746A00716208 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43A9BF32C83746A00716208 /* ViewController.swift */; };
@@ -40,6 +43,9 @@
 /* Begin PBXFileReference section */
 		5AA00D37A00A92E8A55A6DA3 /* Pods-Shirusu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shirusu.release.xcconfig"; path = "Target Support Files/Pods-Shirusu/Pods-Shirusu.release.xcconfig"; sourceTree = "<group>"; };
 		CD74E5DF3DFECB3A1938D5A3 /* Pods-Shirusu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shirusu.debug.xcconfig"; path = "Target Support Files/Pods-Shirusu/Pods-Shirusu.debug.xcconfig"; sourceTree = "<group>"; };
+		E400EE672C8C9B1200F5FFB2 /* SaveDialogBoxVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDialogBoxVC.swift; sourceTree = "<group>"; };
+		E400EE682C8C9B1200F5FFB2 /* SaveDialogBoxVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveDialogBoxVC.xib; sourceTree = "<group>"; };
+		E4064AF82C8D9FC000305EA6 /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
 		E43A9BEC2C83746A00716208 /* Shirusu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shirusu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E43A9BEF2C83746A00716208 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E43A9BF12C83746A00716208 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +151,8 @@
 				E44B3A412C84097F00618393 /* CustomTextField.swift */,
 				E46967B92C8C283F0066F125 /* CustomSearchTextField.swift */,
 				E46967BB2C8C28500066F125 /* CustomSearchTextField.xib */,
+				E400EE672C8C9B1200F5FFB2 /* SaveDialogBoxVC.swift */,
+				E400EE682C8C9B1200F5FFB2 /* SaveDialogBoxVC.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -163,6 +171,7 @@
 			children = (
 				E44B3A442C8412E400618393 /* ClipBoardService.swift */,
 				E4CD34442C847FF000A1ED4D /* DatabaseService.swift */,
+				E4064AF82C8D9FC000305EA6 /* FileManagerService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -311,6 +320,7 @@
 				E43A9BF72C83746A00716208 /* Main.storyboard in Resources */,
 				E46967BC2C8C28500066F125 /* CustomSearchTextField.xib in Resources */,
 				E43A9C0B2C83775400716208 /* WriterVC.xib in Resources */,
+				E400EE6A2C8C9B1200F5FFB2 /* SaveDialogBoxVC.xib in Resources */,
 				E46F6A6F2C837CF0008EF23A /* SettingsVC.xib in Resources */,
 				E4CD34432C847FD900A1ED4D /* JMdict_e.db in Resources */,
 			);
@@ -373,6 +383,7 @@
 				E46F6A672C837A2A008EF23A /* TabBarController.swift in Sources */,
 				E43AA7502C88BD0D00C23AD9 /* JishoVC.swift in Sources */,
 				E44B3A422C84097F00618393 /* CustomTextField.swift in Sources */,
+				E400EE692C8C9B1200F5FFB2 /* SaveDialogBoxVC.swift in Sources */,
 				E46967B82C8C24E40066F125 /* WordSearchModel.swift in Sources */,
 				E46967C02C8C32970066F125 /* WordSearchCell.swift in Sources */,
 				E4CD34452C847FF000A1ED4D /* DatabaseService.swift in Sources */,
@@ -381,6 +392,7 @@
 				E43A9C0A2C83775400716208 /* WriterVC.swift in Sources */,
 				E46F6A6E2C837CF0008EF23A /* SettingsVC.swift in Sources */,
 				E46F6A722C837CFA008EF23A /* SheetsVC.swift in Sources */,
+				E4064AF92C8D9FC000305EA6 /* FileManagerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

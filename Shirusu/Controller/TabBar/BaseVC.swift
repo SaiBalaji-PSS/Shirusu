@@ -17,8 +17,8 @@ class BaseVC: UIViewController {
     }
     
     func setUpStatusBarColor(){
-        let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
-        let statusBarView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: statusBarHeight))
+        
+        let statusBarView = UIView(frame: UIApplication.shared.statusBarFrame)
         statusBarView.backgroundColor = #colorLiteral(red: 0.737254902, green: 0, blue: 0.1764705882, alpha: 1)
         view.addSubview(statusBarView)
         

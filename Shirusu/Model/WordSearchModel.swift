@@ -13,3 +13,9 @@ struct WordSearchModel{
     let meaning: String
     let partOfSpeech: String
 }
+
+
+struct SavedFileModel{
+    let fileName: String
+    let filePath: URL
+}
