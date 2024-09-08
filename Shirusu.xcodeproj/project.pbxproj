@@ -36,6 +36,8 @@
 		E46F6A6F2C837CF0008EF23A /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E46F6A6D2C837CF0008EF23A /* SettingsVC.xib */; };
 		E46F6A722C837CFA008EF23A /* SheetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F6A702C837CFA008EF23A /* SheetsVC.swift */; };
 		E46F6A732C837CFA008EF23A /* SheetsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E46F6A712C837CFA008EF23A /* SheetsVC.xib */; };
+		E4C4F0C52C8DCEDB005DFF4F /* SheetViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4F0C32C8DCEDB005DFF4F /* SheetViewVC.swift */; };
+		E4C4F0C62C8DCEDB005DFF4F /* SheetViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4C4F0C42C8DCEDB005DFF4F /* SheetViewVC.xib */; };
 		E4CD34432C847FD900A1ED4D /* JMdict_e.db in Resources */ = {isa = PBXBuildFile; fileRef = E4CD34422C847FD900A1ED4D /* JMdict_e.db */; };
 		E4CD34452C847FF000A1ED4D /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CD34442C847FF000A1ED4D /* DatabaseService.swift */; };
 /* End PBXBuildFile section */
@@ -73,6 +75,8 @@
 		E46F6A6D2C837CF0008EF23A /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
 		E46F6A702C837CFA008EF23A /* SheetsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetsVC.swift; sourceTree = "<group>"; };
 		E46F6A712C837CFA008EF23A /* SheetsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SheetsVC.xib; sourceTree = "<group>"; };
+		E4C4F0C32C8DCEDB005DFF4F /* SheetViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewVC.swift; sourceTree = "<group>"; };
+		E4C4F0C42C8DCEDB005DFF4F /* SheetViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SheetViewVC.xib; sourceTree = "<group>"; };
 		E4CD34422C847FD900A1ED4D /* JMdict_e.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = JMdict_e.db; sourceTree = "<group>"; };
 		E4CD34442C847FF000A1ED4D /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		F114BEE045FF0A1E7E0A62CA /* Pods_Shirusu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shirusu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,6 +251,8 @@
 			children = (
 				E46F6A702C837CFA008EF23A /* SheetsVC.swift */,
 				E46F6A712C837CFA008EF23A /* SheetsVC.xib */,
+				E4C4F0C32C8DCEDB005DFF4F /* SheetViewVC.swift */,
+				E4C4F0C42C8DCEDB005DFF4F /* SheetViewVC.xib */,
 			);
 			path = Sheets;
 			sourceTree = "<group>";
@@ -318,6 +324,7 @@
 				E43A9BF92C83746B00716208 /* Assets.xcassets in Resources */,
 				E46967C12C8C32970066F125 /* WordSearchCell.xib in Resources */,
 				E43A9BF72C83746A00716208 /* Main.storyboard in Resources */,
+				E4C4F0C62C8DCEDB005DFF4F /* SheetViewVC.xib in Resources */,
 				E46967BC2C8C28500066F125 /* CustomSearchTextField.xib in Resources */,
 				E43A9C0B2C83775400716208 /* WriterVC.xib in Resources */,
 				E400EE6A2C8C9B1200F5FFB2 /* SaveDialogBoxVC.xib in Resources */,
@@ -386,6 +393,7 @@
 				E400EE692C8C9B1200F5FFB2 /* SaveDialogBoxVC.swift in Sources */,
 				E46967B82C8C24E40066F125 /* WordSearchModel.swift in Sources */,
 				E46967C02C8C32970066F125 /* WordSearchCell.swift in Sources */,
+				E4C4F0C52C8DCEDB005DFF4F /* SheetViewVC.swift in Sources */,
 				E4CD34452C847FF000A1ED4D /* DatabaseService.swift in Sources */,
 				E46967C32C8C6D5F0066F125 /* BaseVC.swift in Sources */,
 				E46967BA2C8C283F0066F125 /* CustomSearchTextField.swift in Sources */,

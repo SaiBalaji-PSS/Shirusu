@@ -27,10 +27,12 @@ class WriterVC: BaseVC {
         self.setupTipViewPreference()
         DatabaseService.shared.loadDB()
         self.setUpStatusBarColor()
+    
         
     }
 
     @IBAction func undoBtnPressed(_ sender: Any) {
+
         if let canUndo = textEditor.undoManager?.canUndo{
             if canUndo{
                 textEditor.undoManager?.undo()
@@ -194,6 +196,7 @@ class WriterVC: BaseVC {
         }
         catch{
             print(error)
+            self.showErrorAlert(title: "Error", message: error.localizedDescription, positiveBtnTitle: "Ok")
         }
     }
     //Shows the tip view with the meaning from the database, hides the tip view when no text is selected
@@ -266,7 +269,8 @@ extension WriterVC: SaveDialogBoxDelegate{
         if let fileName, let content = textEditor.text, content.isEmpty == false{
             FileManagerService.shared.saveFile(fileName: fileName, content: content) { error  in
                 if let error{
-                    print(error)
+                    self.showErrorAlert(title: "Error", message: error.localizedDescription, positiveBtnTitle: "Ok")
+                    
                 }
             }
         }

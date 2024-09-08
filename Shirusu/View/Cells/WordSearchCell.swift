@@ -24,8 +24,8 @@ class WordSearchCell: UITableViewCell {
     }
     
     func updateCell(word: WordSearchModel){
-        self.topLbl.text = "\(word.kanji),\(word.kana)"
-        self.bottomLbl.text = "\(word.meaning) \(word.partOfSpeech)"
+        self.topLbl.text = "Kanji: \(word.kanji)  Kana: \(word.kana)"
+        self.bottomLbl.text = "Meaning: \(word.meaning) \n Parts Of Speech: \(word.partOfSpeech)"
     }
     
 }

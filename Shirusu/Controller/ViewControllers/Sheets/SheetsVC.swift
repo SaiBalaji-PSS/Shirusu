@@ -40,6 +40,7 @@ class SheetsVC: BaseVC {
         FileManagerService.shared.readAllSavedFiles { files , error  in
             if let error{
                 print(error)
+                self.showErrorAlert(title: "Error", message: error.localizedDescription, positiveBtnTitle: "Ok")
             }
             if let files{
                 self.fileList = files.map({ url  in
@@ -47,6 +48,20 @@ class SheetsVC: BaseVC {
                 })
                 self.tableView.reloadData()
             }
+        }
+    }
+    func readContentFromFile(file: SavedFileModel){
+        do{
+            let content = try Data(contentsOf: file.filePath)
+            let vc = SheetViewVC(nibName: "SheetViewVC", bundle: nil)
+            vc.content = String(data: content, encoding: .utf8)
+            vc.fileName = file.fileName
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+        }
+        catch{
+            print(error)
+            self.showErrorAlert(title: "Error", message: error.localizedDescription, positiveBtnTitle: "Ok")
         }
     }
     
@@ -61,5 +76,8 @@ extension SheetsVC: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "CELL", for: indexPath)
         cell.textLabel?.text = self.fileList[indexPath.row].fileName
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.readContentFromFile(file: self.fileList[indexPath.row])
     }
 }

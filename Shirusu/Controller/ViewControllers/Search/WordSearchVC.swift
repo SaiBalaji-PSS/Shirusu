@@ -20,10 +20,10 @@ class WordSearchVC: BaseVC {
    
     @IBOutlet weak var dropDownView: UIView!
     @IBOutlet weak var dropDownLbl: UILabel!
-    @IBOutlet weak var searchBar: UITextField!
+
     @IBOutlet weak var tableView: UITableView!
     private var wordList = [WordSearchModel]()
-    private var wordTypes = ["Noun","Godan","Ichidan","Adjective","Pronoun","Auxillary verb"]
+    private var wordTypes = ["Noun","Godan","Ichidan","Adjective","Pronoun","Irregular verb"]
     private var selectedWordType: String = "Noun"
     
     override func viewDidLoad() {
@@ -48,6 +48,13 @@ class WordSearchVC: BaseVC {
             print("Selected item: \(item) at index: \(index)")
             self.dropDownLbl.text = item
             self.selectedWordType = item
+            if var searchText = customSearchBar.searchTextField.text{
+                if self.selectedWordType.contains("Godan") || self.selectedWordType.contains("Ichidan") || self.selectedWordType.contains("Irregular"){
+                    searchText = "to" + " " + searchText
+                }
+                self.getWordMeaningWithPartsOfSpeech(searchTerm: searchText, partsOfSpeech: self.selectedWordType.lowercased())
+            }
+       
           }
         
     }
@@ -75,6 +82,7 @@ class WordSearchVC: BaseVC {
         DatabaseService.shared.getWordWithPartsOfSpeech(searchTerm: searchTerm, partsOfSpeech: partsOfSpeech) { result , error  in
             if let error{
                 print(error)
+                self.showErrorAlert(title: "Error", message: error.localizedDescription, positiveBtnTitle: "Ok")
             }
             if let result{
                 self.wordList = result
@@ -114,8 +122,11 @@ extension WordSearchVC: UITableViewDelegate, UITableViewDataSource{
 }
 extension WordSearchVC: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let word = textField.text, word.isEmpty == false{
-            self.getWordMeaningWithPartsOfSpeech(searchTerm: word.trimmingCharacters(in: .whitespacesAndNewlines), partsOfSpeech: self.selectedWordType.lowercased())
+        if var word = textField.text, word.isEmpty == false{
+            if self.selectedWordType.contains("Godan") || self.selectedWordType.contains("Ichidan") || self.selectedWordType.contains("Irregular"){
+                word = "to" + " " + word
+            }
+            self.getWordMeaningWithPartsOfSpeech(searchTerm: word, partsOfSpeech: self.selectedWordType.lowercased())
         }
        
         return true
@@ -127,7 +138,7 @@ extension WordSearchVC: CustomSearchTextFieldDelegate{
     func didPressSearchButton(text: String?) {
         if var searchText = text, searchText.isEmpty == false{
             //self.getWordMeaning(searchTerm: searchText.trimmingCharacters(in: .whitespacesAndNewlines))
-            if self.selectedWordType.contains("Godan") || self.selectedWordType.contains("Ichidan"){
+            if self.selectedWordType.contains("Godan") || self.selectedWordType.contains("Ichidan") || self.selectedWordType.contains("Irregular"){
                 searchText = "to" + " " + searchText
             }
             self.getWordMeaningWithPartsOfSpeech(searchTerm: searchText, partsOfSpeech: self.selectedWordType.lowercased())
