@@ -111,7 +111,8 @@ AND pos.value LIKE ?;
     }
     
     
-    func getKanjiWordMeaning(word: String,onCompletion:@escaping(String?,Error?)->(Void)){
+    func getKanjiWordMeaning(word: String,onCompletion:@escaping(String?,Error?,FlashCardWordModel?)->(Void)){
+        var flashCardWord: FlashCardWordModel?
         do{
             if let db{
                 var results = [String]()
@@ -128,18 +129,21 @@ AND pos.value LIKE ?;
                                        "Definitions: \(definitions)\n" +
                                        "Parts of Speech: \(partOfSpeech)"
                                    ]
+                                flashCardWord = FlashCardWordModel(kanji: kanji, kana: hiraganaReadings, defination: definitions, partsOfSpeech: partOfSpeech)
                     
                 }
-                onCompletion(results.first,nil)
+                onCompletion(results.first,nil,flashCardWord)
             }
         }
         catch{
-            onCompletion(nil,error)
+            onCompletion(nil,error,nil)
         }
     }
    
-    func getKanaWordMeaning(word: String,onCompletion:@escaping(String?,Error?)->(Void)){
+    func getKanaWordMeaning(word: String,onCompletion:@escaping(String?,Error?,FlashCardWordModel?)->(Void)){
+        var flashCardWord: FlashCardWordModel?
         do{
+            
             if let db{
                 var results = [String]()
                  let statement = try db.prepare(kanaQuery)
@@ -149,19 +153,19 @@ AND pos.value LIKE ?;
                    
                     let definitions = row[2] as? String ?? ""
                     let partsOfSpeech = row[3] as? String ?? ""
-                    
+                    flashCardWord = FlashCardWordModel(kanji: "", kana: kanaValue, defination: definitions, partsOfSpeech: partsOfSpeech)
                     let result = "Kana: \(kanaValue)\n Definitions: \(definitions)\n Parts of Speech: \(partsOfSpeech)"
                     print(result)
                     results += [result]
-                   
+                    
 
                 }
-                onCompletion(results.first,nil)
+                onCompletion(results.first,nil,flashCardWord)
                 
             }
         }
         catch{
-            onCompletion(nil,error)
+            onCompletion(nil,error,nil)
         }
     }
     

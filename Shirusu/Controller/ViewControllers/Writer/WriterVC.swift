@@ -19,6 +19,7 @@ class WriterVC: BaseVC {
     private var selectedWord: String?
     private var documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.text])
     private var isSelectModeEnalbed = false
+    private var flashCardWord: FlashCardWordModel?
     //MARK: - LIFECYCLE METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,7 @@ class WriterVC: BaseVC {
         DatabaseService.shared.loadDB()
         self.setUpStatusBarColor()
         self.setupKeyboardObservers()
+        
         
     }
     
@@ -68,6 +70,15 @@ class WriterVC: BaseVC {
     
     @IBAction func addToListBtnPressed(_ sender: Any) {
         print(self.selectedWord)
+        print(flashCardWord)
+        if let flashCardWord{
+            RealmManager.shared.saveDataToRealm(word: flashCardWord) { error  in
+                if let error{
+                    self.showErrorAlert(title: "Error", message: error.localizedDescription, positiveBtnTitle: "Ok")
+                }
+            }
+        }
+       
     }
     //    @IBAction func redoBtnPressed(_ sender: Any) {
 //        if let canRedo = textEditor.undoManager?.canRedo{
@@ -254,8 +265,9 @@ class WriterVC: BaseVC {
     //Shows the tip view with the meaning from the database, hides the tip view when no text is selected
     func getWordMeaning(word: String,textRect: CGRect){
         if word.containsKanji(){
-            DatabaseService.shared.getKanjiWordMeaning(word: word) { result , error  in
-                if error == nil, let result{
+            DatabaseService.shared.getKanjiWordMeaning(word: word) { result , error, flashCardWord  in
+                if error == nil, let result, let flashCardWord{
+                    self.flashCardWord = flashCardWord
                     DispatchQueue.main.async {
                         self.showTipView(text: result, selectedTextRect: textRect)
                     }
@@ -269,8 +281,9 @@ class WriterVC: BaseVC {
             }
         }
         else if word.containsHiragana() || word.containsKatakana(){
-            DatabaseService.shared.getKanaWordMeaning(word: word) { result , error  in
-                if error == nil, let result{
+            DatabaseService.shared.getKanaWordMeaning(word: word) { result , error, flashCardWord  in
+                if error == nil, let result, let flashCardWord{
+                    self.flashCardWord = flashCardWord
                     DispatchQueue.main.async {
                         self.showTipView(text: result, selectedTextRect: textRect)
                     }
