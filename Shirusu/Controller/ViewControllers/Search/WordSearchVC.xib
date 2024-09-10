@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -13,6 +14,7 @@
                 <outlet property="customSearchBar" destination="8Hg-m1-DKn" id="sCe-Hk-hvd"/>
                 <outlet property="dropDownLbl" destination="CxD-d6-Q9j" id="LBz-9A-QZj"/>
                 <outlet property="dropDownView" destination="6bc-MF-RxK" id="s7f-Lc-VE3"/>
+                <outlet property="loaderImageView" destination="wy5-M6-VCI" id="czX-MG-lXm"/>
                 <outlet property="tableView" destination="rSD-HG-NRb" id="amW-nP-knm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -90,6 +92,13 @@
                         <constraint firstAttribute="trailing" secondItem="Dei-cX-tb3" secondAttribute="trailing" constant="8" id="oCs-nu-D8m"/>
                     </constraints>
                 </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wy5-M6-VCI">
+                    <rect key="frame" x="117.66666666666669" y="357" width="158" height="138.33333333333331"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="158" id="CpK-nd-vHI"/>
+                        <constraint firstAttribute="height" constant="139.66999999999999" id="y5O-dW-edy"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -102,6 +111,8 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rSD-HG-NRb" secondAttribute="trailing" id="NRw-Nf-DcX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="rSD-HG-NRb" secondAttribute="bottom" id="TKe-3H-u5v"/>
                 <constraint firstItem="auQ-sv-K9H" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="V8y-dd-55F"/>
+                <constraint firstItem="wy5-M6-VCI" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="hnq-0p-uBy"/>
+                <constraint firstItem="wy5-M6-VCI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="reF-R6-3ZC"/>
                 <constraint firstItem="rSD-HG-NRb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="u4V-Vz-9kD"/>
                 <constraint firstItem="rSD-HG-NRb" firstAttribute="top" secondItem="6bc-MF-RxK" secondAttribute="bottom" id="zj9-zE-PYX"/>
             </constraints>
@@ -119,6 +130,7 @@
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="95"/>
         <image name="chevron.down" catalog="system" width="128" height="70"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

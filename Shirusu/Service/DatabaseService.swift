@@ -81,7 +81,7 @@ WHERE d.value = ?;
 """
     
     private let wordSearchWithPartsOfSpeech = """
-SELECT
+SELECT DISTINCT
     k.value AS kanji,
     ka.value AS kana,
     d.value AS english_meaning,
@@ -92,7 +92,7 @@ JOIN kana ka ON e.id = ka.entry_id
 JOIN sense s ON e.id = s.entry_id
 JOIN definition d ON s.id = d.sense_id
 LEFT JOIN part_of_speech pos ON s.id = pos.sense_id
-WHERE d.value == ?
+WHERE (d.value LIKE ? OR k.value LIKE ? OR ka.value LIKE ?)
 AND pos.value LIKE ?;
 """
     
@@ -195,7 +195,7 @@ AND pos.value LIKE ?;
             if let db{
                 var result = [WordSearchModel]()
                 let statement = try db.prepare(wordSearchWithPartsOfSpeech)
-                for row in try statement.run(searchTerm.trimmingCharacters(in: .whitespacesAndNewlines),partsOfSpeech + "%"){
+                for row in try statement.run(searchTerm.trimmingCharacters(in: .whitespacesAndNewlines),searchTerm.trimmingCharacters(in: .whitespacesAndNewlines),searchTerm.trimmingCharacters(in: .whitespacesAndNewlines),partsOfSpeech + "%"){
                     let kanji = row[0] as? String ?? ""
                     let kana = row[1] as? String ?? ""
                     let englishMeaning = row[2] as? String ?? ""

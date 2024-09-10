@@ -25,8 +25,9 @@ class TabBarController: UITabBarController {
         let writerVC = self.createVC(nibName: "WriterVC", title: "Writer", imageName: "keyboard")
         
         let sheetsVC = self.createVC(nibName: "SheetsVC", title: "Sheets", imageName: "book.pages")
+        let flashCardVC = self.createVC(nibName: "FlashCardVC", title: "Flash Card", imageName: "menucard")
         let settingsVC = self.createVC(nibName: "SettingsVC", title: "Settings", imageName: "gear")
-        self.viewControllers = [writerVC,sheetsVC,settingsVC]
+        self.viewControllers = [writerVC,sheetsVC,flashCardVC,settingsVC]
     }
     
     func createVC(nibName: String,title: String,imageName: String) -> UIViewController{
@@ -38,6 +39,8 @@ class TabBarController: UITabBarController {
               viewController = SheetsVC(nibName: nibName, bundle: nil)
           case "SettingsVC":
               viewController = SettingsVC(nibName: nibName, bundle: nil)
+          case "FlashCardVC":
+              viewController = FlashCardVC(nibName: nibName, bundle: nil)
           default:
               viewController = UIViewController(nibName: nibName, bundle: nil)
           }

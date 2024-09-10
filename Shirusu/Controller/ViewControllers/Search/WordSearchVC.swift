@@ -18,6 +18,7 @@ class WordSearchVC: BaseVC {
     @IBOutlet weak var customSearchBar: CustomSearchTextField!
     
    
+    @IBOutlet weak var loaderImageView: UIImageView!
     @IBOutlet weak var dropDownView: UIView!
     @IBOutlet weak var dropDownLbl: UILabel!
 
@@ -40,7 +41,7 @@ class WordSearchVC: BaseVC {
     
     func configureUI(){
 //        self.searchBar.delegate = self
-      
+        self.loaderImageView.isHidden = true
         self.customSearchBar.searchTextField.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -86,15 +87,21 @@ class WordSearchVC: BaseVC {
 //    }
     
     func getWordMeaningWithPartsOfSpeech(searchTerm: String,partsOfSpeech: String){
+     
         DatabaseService.shared.getWordWithPartsOfSpeech(searchTerm: searchTerm, partsOfSpeech: partsOfSpeech) { result , error  in
-            if let error{
-                print(error)
-                self.showErrorAlert(title: "Error", message: error.localizedDescription, positiveBtnTitle: "Ok")
+            DispatchQueue.main.async {
+                if let error{
+                    print(error)
+                    self.showErrorAlert(title: "Error", message: error.localizedDescription, positiveBtnTitle: "Ok")
+                }
+                if let result{
+                    self.wordList = result
+                    self.tableView.reloadData()
+                }
+                self.loaderImageView.isHidden = true
+                self.tableView.isHidden = false
             }
-            if let result{
-                self.wordList = result
-                self.tableView.reloadData()
-            }
+            
         }
     }
 
@@ -145,6 +152,8 @@ extension WordSearchVC: UITextFieldDelegate{
 extension WordSearchVC: CustomSearchTextFieldDelegate{
     func didPressSearchButton(text: String?) {
         if var searchText = text, searchText.isEmpty == false{
+            self.loaderImageView.isHidden = false
+            self.tableView.isHidden = true
             //self.getWordMeaning(searchTerm: searchText.trimmingCharacters(in: .whitespacesAndNewlines))
             if self.selectedWordType.contains("Godan") || self.selectedWordType.contains("Ichidan") || self.selectedWordType.contains("Irregular"){
                 searchText = "to" + " " + searchText

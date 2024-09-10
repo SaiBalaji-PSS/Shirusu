@@ -31,9 +31,10 @@ class RealmManager{
             do{
                 try realm.write {
                     realm.add(word)
-                    onCompletion(nil)
+                    
                 }
               
+                onCompletion(nil)
             }
             catch{
                 onCompletion(error)
@@ -47,6 +48,22 @@ class RealmManager{
             return realm.objects(modelType.self)
         }
         return nil
+    }
+    
+    func deleteDataFromRealm<T: Object>(object: T,onCompletion:@escaping(Error?)->(Void)){
+        if let realm{
+            do{
+                try realm.write {
+                    realm.delete(object)
+                    
+                    
+                }
+                onCompletion(nil)
+            }
+            catch{
+                onCompletion(error)
+            }
+        }
     }
    
 }

@@ -116,21 +116,25 @@ class WriterVC: BaseVC {
     
     
     @IBAction func selectModeBtnPressed(_ sender: UIButton) {
-        self.isSelectModeEnalbed.toggle()
-        if isSelectModeEnalbed{
+
+        if isSelectModeEnalbed == false{
+            print("IS SELECTION MODE ENABLED \(isSelectModeEnalbed)")
             self.view.endEditing(true)
             self.textEditor.isEditable = false
             self.textEditor.isSelectable = true
-           
+            self.isSelectModeEnalbed = true
         }
         else{
            // self.textEditor.resignFirstResponder()
+            print("IS SELECTION MODE ENABLED \(isSelectModeEnalbed)")
             self.tipView?.dismiss()
-            self.selectedWord = nil
+            print("DISMISSED")
+            //self.selectedWord = nil
             self.textEditor.isEditable = true
             self.textEditor.isSelectable = true
+            self.isSelectModeEnalbed = false
         }
-        
+
        
        // self.bottomContraint.constant = - (UIScreen.main.bounds.size.height / 2.0)
         

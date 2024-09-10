@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FlashCardVC" customModule="Shirusu" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="bYC-dM-los" id="Dvx-Fy-Q26"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bYC-dM-los">
+                    <rect key="frame" x="0.0" y="121" width="393" height="697"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TFE-SU-ppG">
+                    <rect key="frame" x="0.0" y="59" width="393" height="62"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="nTR-KM-dFO">
+                            <rect key="frame" x="255" y="14" width="115" height="34.333333333333336"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBw-hb-zTa">
+                                    <rect key="frame" x="0.0" y="0.0" width="53" height="34.333333333333336"/>
+                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="checkmark.circle" catalog="system"/>
+                                    <connections>
+                                        <action selector="selectWordsBtnPressed:" destination="-1" eventType="touchUpInside" id="8K5-7z-4xe"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80B-hB-fNg">
+                                    <rect key="frame" x="62" y="0.0" width="53" height="34.333333333333336"/>
+                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="book" catalog="system"/>
+                                    <connections>
+                                        <action selector="reviewButtonPressed:" destination="-1" eventType="touchUpInside" id="8wA-IY-03x"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.73725490199999999" green="0.0" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="62" id="4Ok-do-egL"/>
+                        <constraint firstAttribute="trailing" secondItem="nTR-KM-dFO" secondAttribute="trailing" constant="23" id="DvI-g8-6cI"/>
+                        <constraint firstItem="nTR-KM-dFO" firstAttribute="centerY" secondItem="TFE-SU-ppG" secondAttribute="centerY" id="i2R-PR-is2"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="bYC-dM-los" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4Ab-rO-JTj"/>
+                <constraint firstItem="TFE-SU-ppG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="CSJ-qV-Yqi"/>
+                <constraint firstItem="TFE-SU-ppG" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="DLm-Gk-KzY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bYC-dM-los" secondAttribute="trailing" id="Lpw-A3-8PJ"/>
+                <constraint firstItem="TFE-SU-ppG" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="WK1-e4-byw"/>
+                <constraint firstItem="bYC-dM-los" firstAttribute="top" secondItem="TFE-SU-ppG" secondAttribute="bottom" id="YC2-LC-NUp"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="bYC-dM-los" secondAttribute="bottom" id="nzO-Sn-shY"/>
+            </constraints>
+            <point key="canvasLocation" x="139.69465648854961" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="book" catalog="system" width="128" height="99"/>
+        <image name="checkmark.circle" catalog="system" width="128" height="123"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
