@@ -270,32 +270,37 @@ class WriterVC: BaseVC {
     func getWordMeaning(word: String,textRect: CGRect){
         if word.containsKanji(){
             DatabaseService.shared.getKanjiWordMeaning(word: word) { result , error, flashCardWord  in
-                if error == nil, let result, let flashCardWord{
-                    self.flashCardWord = flashCardWord
-                    DispatchQueue.main.async {
-                        self.showTipView(text: result, selectedTextRect: textRect)
+                DispatchQueue.main.async {
+                    if error == nil, let result, let flashCardWord{
+                        self.flashCardWord = flashCardWord
+               
+                            self.showTipView(text: result, selectedTextRect: textRect)
+                        
+                     
                     }
-                 
+                    else{
+                        self.tipView?.dismiss()
+                        self.selectedWord = nil
+                        
+                    }
                 }
-                else{
-                    self.tipView?.dismiss()
-                    self.selectedWord = nil
-                    
-                }
+              
             }
         }
         else if word.containsHiragana() || word.containsKatakana(){
             DatabaseService.shared.getKanaWordMeaning(word: word) { result , error, flashCardWord  in
-                if error == nil, let result, let flashCardWord{
-                    self.flashCardWord = flashCardWord
-                    DispatchQueue.main.async {
+                DispatchQueue.main.async {
+                    if error == nil, let result, let flashCardWord{
+                        self.flashCardWord = flashCardWord
+                        
                         self.showTipView(text: result, selectedTextRect: textRect)
+                        
+                        
                     }
-                 
-                }
-                else{
-                    self.tipView?.dismiss()
-                    self.selectedWord = nil
+                    else{
+                        self.tipView?.dismiss()
+                        self.selectedWord = nil
+                    }
                 }
             }
         }
@@ -307,9 +312,10 @@ class WriterVC: BaseVC {
 //MARK: - UITextView Delegate Methods
 extension WriterVC: UITextViewDelegate{
     //Get the meaning for the selected word from DB
+    
     func textViewDidChangeSelection(_ textView: UITextView) {
         if let selectedRange = textView.selectedTextRange{
-            if isSelectModeEnalbed == true{
+            if isSelectModeEnalbed{
                 if let selectedText = textView.text(in: selectedRange), selectedText.isEmpty == false{
                     print(selectedText)
                     let selectedTextRect = textView.firstRect(for: selectedRange)

@@ -26,6 +26,7 @@ extension DBError: LocalizedError{
 class DatabaseService{
     static var shared = DatabaseService()
     private var db: Connection?
+    let dispatchQueue = DispatchQueue(label: "QueueIdentification2", qos: .userInitiated)
     
     private let kanaQuery = """
         SELECT entry.id AS entry_id,
@@ -113,64 +114,71 @@ AND pos.value LIKE ?;
     
     func getKanjiWordMeaning(word: String,onCompletion:@escaping(String?,Error?,FlashCardWordModel?)->(Void)){
         var flashCardWord: FlashCardWordModel?
-        do{
-            if let db{
-                var results = [String]()
-                let statement = try db.prepare(kanjiQuery)
-                for row in try statement.run(word){
-                    let kanji = row[1] as? String ?? ""
-                                   let hiraganaReadings = row[2] as? String ?? ""
-                                   let definitions = row[3] as? String ?? ""
-                                   let partOfSpeech = row[4] as? String ?? ""
-                                   
-                                   results += [
-                                       "Kanji: \(kanji)\n" +
-                                       "Hiragana Readings: \(hiraganaReadings)\n" +
-                                       "Definitions: \(definitions)\n" +
-                                       "Parts of Speech: \(partOfSpeech)"
-                                   ]
-                                flashCardWord = FlashCardWordModel(kanji: kanji, kana: hiraganaReadings, defination: definitions, partsOfSpeech: partOfSpeech)
-                    
+        dispatchQueue.async {
+            do{
+                if let db = self.db{
+                    var results = [String]()
+                    let statement = try db.prepare(self.kanjiQuery)
+                    for row in try statement.run(word){
+                        let kanji = row[1] as? String ?? ""
+                                       let hiraganaReadings = row[2] as? String ?? ""
+                                       let definitions = row[3] as? String ?? ""
+                                       let partOfSpeech = row[4] as? String ?? ""
+                                       
+                                       results += [
+                                           "Kanji: \(kanji)\n" +
+                                           "Hiragana Readings: \(hiraganaReadings)\n" +
+                                           "Definitions: \(definitions)\n" +
+                                           "Parts of Speech: \(partOfSpeech)"
+                                       ]
+                                    flashCardWord = FlashCardWordModel(kanji: kanji, kana: hiraganaReadings, defination: definitions, partsOfSpeech: partOfSpeech)
+                        
+                    }
+                    onCompletion(results.first,nil,flashCardWord)
                 }
-                onCompletion(results.first,nil,flashCardWord)
+            }
+            catch{
+                onCompletion(nil,error,nil)
             }
         }
-        catch{
-            onCompletion(nil,error,nil)
-        }
+        
     }
    
     func getKanaWordMeaning(word: String,onCompletion:@escaping(String?,Error?,FlashCardWordModel?)->(Void)){
         var flashCardWord: FlashCardWordModel?
-        do{
-            
-            if let db{
-                var results = [String]()
-                 let statement = try db.prepare(kanaQuery)
-                for row in try statement.run(word){
-                    
-                    let kanaValue = row[1] as? String ?? ""
-                   
-                    let definitions = row[2] as? String ?? ""
-                    let partsOfSpeech = row[3] as? String ?? ""
-                    flashCardWord = FlashCardWordModel(kanji: "", kana: kanaValue, defination: definitions, partsOfSpeech: partsOfSpeech)
-                    let result = "Kana: \(kanaValue)\n Definitions: \(definitions)\n Parts of Speech: \(partsOfSpeech)"
-                    print(result)
-                    results += [result]
-                    
-
-                }
-                onCompletion(results.first,nil,flashCardWord)
+        dispatchQueue.async {
+            do{
                 
+                if let db = self.db{
+                    var results = [String]()
+                    let statement = try db.prepare(self.kanaQuery)
+                    for row in try statement.run(word){
+                        
+                        let kanaValue = row[1] as? String ?? ""
+                       
+                        let definitions = row[2] as? String ?? ""
+                        let partsOfSpeech = row[3] as? String ?? ""
+                        flashCardWord = FlashCardWordModel(kanji: "", kana: kanaValue, defination: definitions, partsOfSpeech: partsOfSpeech)
+                        let result = "Kana: \(kanaValue)\n Definitions: \(definitions)\n Parts of Speech: \(partsOfSpeech)"
+                        print(result)
+                        results += [result]
+                        
+
+                    }
+                    onCompletion(results.first,nil,flashCardWord)
+                    
+                }
+            }
+            catch{
+                onCompletion(nil,error,nil)
             }
         }
-        catch{
-            onCompletion(nil,error,nil)
-        }
+      
     }
     
     func getWordList(searchTerm: String,onCompletion:@escaping([WordSearchModel]?,Error?)->(Void)){
         do{
+            
             if let db{
                 var result = [WordSearchModel]()
                 let statement = try db.prepare(wordSearchQuery)
@@ -191,25 +199,28 @@ AND pos.value LIKE ?;
         }
     }
     func getWordWithPartsOfSpeech(searchTerm: String,partsOfSpeech: String,onCompletion:@escaping([WordSearchModel]?,Error?)->(Void)){
-        do{
-            if let db{
-                var result = [WordSearchModel]()
-                let statement = try db.prepare(wordSearchWithPartsOfSpeech)
-                for row in try statement.run(searchTerm.trimmingCharacters(in: .whitespacesAndNewlines),searchTerm.trimmingCharacters(in: .whitespacesAndNewlines),searchTerm.trimmingCharacters(in: .whitespacesAndNewlines),partsOfSpeech + "%"){
-                    let kanji = row[0] as? String ?? ""
-                    let kana = row[1] as? String ?? ""
-                    let englishMeaning = row[2] as? String ?? ""
-                    let partOfSpeech = row[3] as? String ?? ""
-                    result.append(WordSearchModel(kanji: kanji, kana: kana, meaning: englishMeaning, partOfSpeech: partOfSpeech))
+        dispatchQueue.async {
+            do{
+                if let db = self.db{
+                    var result = [WordSearchModel]()
+                    let statement = try db.prepare(self.wordSearchWithPartsOfSpeech)
+                    for row in try statement.run(searchTerm.trimmingCharacters(in: .whitespacesAndNewlines) ,searchTerm.trimmingCharacters(in: .whitespacesAndNewlines) ,searchTerm.trimmingCharacters(in: .whitespacesAndNewlines),partsOfSpeech + "%"){
+                        let kanji = row[0] as? String ?? ""
+                        let kana = row[1] as? String ?? ""
+                        let englishMeaning = row[2] as? String ?? ""
+                        let partOfSpeech = row[3] as? String ?? ""
+                        result.append(WordSearchModel(kanji: kanji, kana: kana, meaning: englishMeaning, partOfSpeech: partOfSpeech))
+                    }
+                    onCompletion(result,nil)
+                    
                 }
-                onCompletion(result,nil)
-                
+            }
+            catch{
+                print(error)
+                onCompletion(nil,error)
             }
         }
-        catch{
-            print(error)
-            onCompletion(nil,error)
-        }
+        
     }
 }
 

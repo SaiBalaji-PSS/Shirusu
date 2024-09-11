@@ -54,9 +54,16 @@ class WordSearchVC: BaseVC {
             print("Selected item: \(item) at index: \(index)")
             self.dropDownLbl.text = item
             self.selectedWordType = item
+            self.tableView.isHidden = true
+            self.loaderImageView.isHidden = false
             if var searchText = customSearchBar.searchTextField.text{
-                if self.selectedWordType.contains("Godan") || self.selectedWordType.contains("Ichidan") || self.selectedWordType.contains("Irregular"){
-                    searchText = "to" + " " + searchText
+                
+                //If the word is a japnaese word verb then there is no need to add "to"
+                //If the word is an english word verb then add "to"
+                if searchText.containsKanji() == false || searchText.containsHiragana() == false{
+                    if self.selectedWordType.contains("Godan") || self.selectedWordType.contains("Ichidan") || self.selectedWordType.contains("Irregular"){
+                        searchText = "to" + " " + searchText
+                    }
                 }
                 self.getWordMeaningWithPartsOfSpeech(searchTerm: searchText, partsOfSpeech: self.selectedWordType.lowercased())
             }
@@ -140,6 +147,7 @@ extension WordSearchVC: UITextFieldDelegate{
             if self.selectedWordType.contains("Godan") || self.selectedWordType.contains("Ichidan") || self.selectedWordType.contains("Irregular"){
                 word = "to" + " " + word
             }
+            self.loaderImageView.isHidden = false
             self.getWordMeaningWithPartsOfSpeech(searchTerm: word, partsOfSpeech: self.selectedWordType.lowercased())
         }
         self.view.endEditing(true)
@@ -158,6 +166,7 @@ extension WordSearchVC: CustomSearchTextFieldDelegate{
             if self.selectedWordType.contains("Godan") || self.selectedWordType.contains("Ichidan") || self.selectedWordType.contains("Irregular"){
                 searchText = "to" + " " + searchText
             }
+            self.loaderImageView.isHidden = false
             self.getWordMeaningWithPartsOfSpeech(searchTerm: searchText, partsOfSpeech: self.selectedWordType.lowercased())
             self.view.endEditing(true)
         }

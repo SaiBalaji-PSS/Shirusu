@@ -15,32 +15,62 @@ class FileManagerService{
     func saveFile(fileName: String,content: String,onCompletion:@escaping(Error?)->(Void)){
         let documentPath = fm.urls(for: .documentDirectory, in: .userDomainMask).first
         let finalFileName = fileName + ".txt"
-        if var documentPath{
-            documentPath.appendPathComponent(finalFileName)
-            print(documentPath.absoluteString)
+        let folderName = "MySheets"
+        let folderPath = documentPath?.appendingPathComponent(folderName)
+        
+        if var folderPath{
+            if fm.fileExists(atPath: folderPath.path) == false{
+                do{
+                    try fm.createDirectory(atPath: folderPath.path, withIntermediateDirectories: true)
+                }
+                catch{
+                    print(error)
+                    onCompletion(error)
+                }
+            }
+            folderPath.appendPathComponent(finalFileName)
             do{
-                try content.write(to: documentPath, atomically: true, encoding: .utf8)
+                try content.write(to: folderPath, atomically: true, encoding: .utf8)
                 onCompletion(nil)
             }
             catch{
+                print(error)
                 onCompletion(error)
             }
-    
-            
         }
+        
+//        if var documentPath{
+//            
+//            documentPath.appendPathComponent(finalFileName)
+//            print(documentPath.absoluteString)
+//            do{
+//                try fm.createDirectory(at: documentPath, withIntermediateDirectories: true)
+//                try content.write(to: documentPath, atomically: true, encoding: .utf8)
+//                onCompletion(nil)
+//            }
+//            catch{
+//                onCompletion(error)
+//            }
+//    
+//            
+//        }
     }
     func readAllSavedFiles(onCompletion:@escaping([URL]?,Error?)->(Void)){
         let documentPath = fm.urls(for: .documentDirectory, in: .userDomainMask).first
-        if let documentPath{
-            do{
-                let contents = try fm.contentsOfDirectory(at: documentPath.absoluteURL, includingPropertiesForKeys: nil,options: .skipsHiddenFiles)
-                
-                onCompletion(contents,nil)
-                
+        var finalURL = documentPath?.appendingPathComponent("MySheets")
+        if let documentPath, let finalURL{
+            if fm.fileExists(atPath: finalURL.path){
+                do{
+                    let contents = try fm.contentsOfDirectory(at: finalURL.absoluteURL, includingPropertiesForKeys: nil,options: .skipsHiddenFiles)
+                    
+                    onCompletion(contents,nil)
+                    
+                }
+                catch{
+                    onCompletion(nil,error)
+                }
             }
-            catch{
-                onCompletion(nil,error)
-            }
+          
         }
        
     }
