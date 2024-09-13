@@ -15,6 +15,7 @@ class FlashCardWordModel: Object{
     @Persisted var kana: String
     @Persisted var defination: String
     @Persisted var partsOfSpeech: String
+    var isSelected = false 
     convenience init( kanji: String, kana: String, defination: String, partsOfSpeech: String) {
         self.init()
         self.kanji = kanji

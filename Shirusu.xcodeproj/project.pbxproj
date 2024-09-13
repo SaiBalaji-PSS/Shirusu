@@ -11,7 +11,7 @@
 		E400EE692C8C9B1200F5FFB2 /* SaveDialogBoxVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E400EE672C8C9B1200F5FFB2 /* SaveDialogBoxVC.swift */; };
 		E400EE6A2C8C9B1200F5FFB2 /* SaveDialogBoxVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E400EE682C8C9B1200F5FFB2 /* SaveDialogBoxVC.xib */; };
 		E4064AF92C8D9FC000305EA6 /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4064AF82C8D9FC000305EA6 /* FileManagerService.swift */; };
-		E42A540E2C909AFB00A3E422 /* FlashCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42A540C2C909AFB00A3E422 /* FlashCardVC.swift */; };
+		E42A540E2C909AFB00A3E422 /* SavedWordsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42A540C2C909AFB00A3E422 /* SavedWordsListVC.swift */; };
 		E42A540F2C909AFB00A3E422 /* FlashCardVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E42A540D2C909AFB00A3E422 /* FlashCardVC.xib */; };
 		E43A9BF02C83746A00716208 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43A9BEF2C83746A00716208 /* AppDelegate.swift */; };
 		E43A9BF22C83746A00716208 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43A9BF12C83746A00716208 /* SceneDelegate.swift */; };
@@ -52,7 +52,7 @@
 		E400EE672C8C9B1200F5FFB2 /* SaveDialogBoxVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDialogBoxVC.swift; sourceTree = "<group>"; };
 		E400EE682C8C9B1200F5FFB2 /* SaveDialogBoxVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveDialogBoxVC.xib; sourceTree = "<group>"; };
 		E4064AF82C8D9FC000305EA6 /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
-		E42A540C2C909AFB00A3E422 /* FlashCardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardVC.swift; sourceTree = "<group>"; };
+		E42A540C2C909AFB00A3E422 /* SavedWordsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedWordsListVC.swift; sourceTree = "<group>"; };
 		E42A540D2C909AFB00A3E422 /* FlashCardVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlashCardVC.xib; sourceTree = "<group>"; };
 		E43A9BEC2C83746A00716208 /* Shirusu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shirusu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E43A9BEF2C83746A00716208 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 		E42A540B2C909AE800A3E422 /* FlashCard */ = {
 			isa = PBXGroup;
 			children = (
-				E42A540C2C909AFB00A3E422 /* FlashCardVC.swift */,
+				E42A540C2C909AFB00A3E422 /* SavedWordsListVC.swift */,
 				E42A540D2C909AFB00A3E422 /* FlashCardVC.xib */,
 			);
 			path = FlashCard;
@@ -410,7 +410,7 @@
 				E43A9BF22C83746A00716208 /* SceneDelegate.swift in Sources */,
 				E4D393BC2C8F50C200250565 /* RealmManager.swift in Sources */,
 				E46F6A672C837A2A008EF23A /* TabBarController.swift in Sources */,
-				E42A540E2C909AFB00A3E422 /* FlashCardVC.swift in Sources */,
+				E42A540E2C909AFB00A3E422 /* SavedWordsListVC.swift in Sources */,
 				E43AA7502C88BD0D00C23AD9 /* JishoVC.swift in Sources */,
 				E44B3A422C84097F00618393 /* CustomTextField.swift in Sources */,
 				E400EE692C8C9B1200F5FFB2 /* SaveDialogBoxVC.swift in Sources */,

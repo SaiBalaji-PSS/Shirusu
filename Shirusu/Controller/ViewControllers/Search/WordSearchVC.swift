@@ -114,6 +114,7 @@ extension WordSearchVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "WordSearchCell", for: indexPath) as? WordSearchCell{
             cell.updateCell(word: self.wordList[indexPath.row])
+            cell.tickImageView.isHidden = true 
             return cell
         }
         return UITableViewCell()

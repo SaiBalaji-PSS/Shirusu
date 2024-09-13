@@ -7,10 +7,10 @@
 
 import UIKit
 
-class FlashCardVC: BaseVC {
+class SavedWordsListVC: BaseVC {
     @IBOutlet weak var tableView: UITableView!
     private var savedWords = [FlashCardWordModel]()
-    
+    private var selectedWordList = [FlashCardWordModel]()
     override  func loadView() {
         super.loadView()
         self.setUpStatusBarColor()
@@ -47,17 +47,21 @@ class FlashCardVC: BaseVC {
     @IBAction func selectWordsBtnPressed(_ sender: Any) {
     }
     @IBAction func reviewButtonPressed(_ sender: Any) {
+        print(self.selectedWordList.count)
     }
     
 }
 
-extension FlashCardVC: UITableViewDelegate, UITableViewDataSource{
+extension SavedWordsListVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.savedWords.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "WordSearchCell", for: indexPath) as? WordSearchCell{
-            cell.updateCell(word: WordSearchModel(kanji: self.savedWords[indexPath.row].kanji, kana: self.savedWords[indexPath.row].kana, meaning: self.savedWords[indexPath.row].defination, partOfSpeech: self.savedWords[indexPath.row].partsOfSpeech))
+//            cell.updateCell(word: WordSearchModel(kanji: self.savedWords[indexPath.row].kanji, kana: self.savedWords[indexPath.row].kana, meaning: self.savedWords[indexPath.row].defination, partOfSpeech: self.savedWords[indexPath.row].partsOfSpeech))
+            cell.updateCellSavedWordsList(word: self.savedWords[indexPath.row])
+            cell.delegate = self
+            cell.index = indexPath
             return cell
         }
         return UITableViewCell()
@@ -74,5 +78,23 @@ extension FlashCardVC: UITableViewDelegate, UITableViewDataSource{
                 }
             }
         }
+    }
+}
+
+
+extension SavedWordsListVC: WordCellDelegate{
+    func tickBtnPressed(isCellSelected: Bool, at indexPath: IndexPath) {
+        self.savedWords[indexPath.row].isSelected = isCellSelected
+     
+        if isCellSelected{
+            self.selectedWordList.append(self.savedWords[indexPath.row])
+        }
+        else{
+            if let index = self.selectedWordList.firstIndex(of: self.savedWords[indexPath.row]){
+                self.selectedWordList.remove(at: index)
+            }
+        }
+        self.tableView.reloadData()
+      
     }
 }

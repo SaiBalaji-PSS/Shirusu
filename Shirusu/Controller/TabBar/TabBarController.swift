@@ -19,9 +19,11 @@ class TabBarController: UITabBarController {
     
     
     func createTabBar(){
+        tabBar.backgroundColor = #colorLiteral(red: 0.737254902, green: 0, blue: 0.1764705882, alpha: 1)
+        self.tabBar.isTranslucent = false
         self.tabBar.tintColor = UIColor.white
         self.tabBar.unselectedItemTintColor = UIColor(red: 184/255, green: 134/255, blue: 11/255, alpha: 1) 
-        tabBar.backgroundColor = #colorLiteral(red: 0.737254902, green: 0, blue: 0.1764705882, alpha: 1)
+     
         let writerVC = self.createVC(nibName: "WriterVC", title: "Writer", imageName: "keyboard")
         
         let sheetsVC = self.createVC(nibName: "SheetsVC", title: "Sheets", imageName: "book.pages")
@@ -41,7 +43,7 @@ class TabBarController: UITabBarController {
           case "SettingsVC":
               viewController = SettingsVC(nibName: nibName, bundle: nil)
           case "FlashCardVC":
-              viewController = FlashCardVC(nibName: nibName, bundle: nil)
+              viewController = SavedWordsListVC(nibName: nibName, bundle: nil)
           default:
               viewController = UIViewController(nibName: nibName, bundle: nil)
           }
