@@ -8,8 +8,13 @@
 import UIKit
 import WebKit
 
-class JishoVC: UIViewController {
 
+protocol JishoVCDelegate: AnyObject{
+    func didPressBackButton()
+    
+}
+class JishoVC: BaseVC {
+    weak var delegate: JishoVCDelegate?
     @IBOutlet weak var loadingProgressBar: UIProgressView!
     @IBOutlet weak var webView: WKWebView!
     private let BASE_URL = "https://jisho.org/search/"
@@ -21,6 +26,7 @@ class JishoVC: UIViewController {
         let FINAL_URL = BASE_URL + word
         print(FINAL_URL)
         self.webView.load(URLRequest(url: URL(string: FINAL_URL)!))
+        self.setUpStatusBarColor()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +37,7 @@ class JishoVC: UIViewController {
     }
 
     @IBAction func backBtnPressed(_ sender: Any) {
+        self.delegate?.didPressBackButton()
         self.dismiss(animated: true)
     }
     

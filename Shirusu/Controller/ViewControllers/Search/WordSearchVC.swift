@@ -75,24 +75,6 @@ class WordSearchVC: BaseVC {
     
     
     
-    
-    
-//    func getWordMeaning(searchTerm: String){
-//        DatabaseService.shared.getWordList(searchTerm: searchTerm) { result , error  in
-//            DispatchQueue.main.async {
-//                if let error{
-//                    print(error)
-//                }
-//                if let result{
-//                    self.wordList = result
-//                    self.tableView.reloadData()
-//                    
-//                }
-//            }
-//           
-//        }
-//    }
-    
     func getWordMeaningWithPartsOfSpeech(searchTerm: String,partsOfSpeech: String){
      
         DatabaseService.shared.getWordWithPartsOfSpeech(searchTerm: searchTerm, partsOfSpeech: partsOfSpeech) { result , error  in

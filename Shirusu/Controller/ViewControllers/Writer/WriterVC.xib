@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WriterVC" customModule="Shirusu" customModuleProvider="target">
             <connections>
                 <outlet property="bottomContraint" destination="235-ID-9ac" id="i8n-KE-oeu"/>
+                <outlet property="jishoBtn" destination="8zI-Lc-PYR" id="3jQ-KH-SQY"/>
                 <outlet property="textEditor" destination="ScI-Cf-TA5" id="9sa-Qa-dUK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

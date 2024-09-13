@@ -12,6 +12,7 @@ class WriterVC: BaseVC {
     //MARK: - PROPERTIES
     
 
+    @IBOutlet weak var jishoBtn: UIButton!
     @IBOutlet weak var bottomContraint: NSLayoutConstraint!
     @IBOutlet weak var textEditor: CustomTextField!
     private var tipView: EasyTipView?
@@ -30,7 +31,7 @@ class WriterVC: BaseVC {
         DatabaseService.shared.loadDB()
         self.setUpStatusBarColor()
         self.setupKeyboardObservers()
-        
+        self.jishoBtn.isHidden = true
         
     }
     
@@ -91,14 +92,17 @@ class WriterVC: BaseVC {
     @IBAction func jishoBtnPressed(_ sender: Any) {
         if let selectedWord{
             let jishoVC = JishoVC(nibName: "JishoVC", bundle: nil)
+            jishoVC.delegate = self
             jishoVC.modalPresentationStyle = .fullScreen
             jishoVC.word = selectedWord
+            self.tipView?.dismiss()
             self.present(jishoVC, animated: true)
         }
      
     }
     
     @IBAction func saveBtnPressed(_ sender: Any) {
+        self.tipView?.dismiss()
         let saveVC = SaveDialogBoxVC(nibName: "SaveDialogBoxVC", bundle: nil)
         saveVC.modalPresentationStyle = .overCurrentContext
         saveVC.modalTransitionStyle = .crossDissolve
@@ -118,6 +122,7 @@ class WriterVC: BaseVC {
     @IBAction func selectModeBtnPressed(_ sender: UIButton) {
 
         if isSelectModeEnalbed == false{
+            self.jishoBtn.isHidden = false
             print("IS SELECTION MODE ENABLED \(isSelectModeEnalbed)")
             self.view.endEditing(true)
             self.textEditor.isEditable = false
@@ -126,6 +131,7 @@ class WriterVC: BaseVC {
         }
         else{
            // self.textEditor.resignFirstResponder()
+            self.jishoBtn.isHidden = true
             print("IS SELECTION MODE ENABLED \(isSelectModeEnalbed)")
             self.tipView?.dismiss()
             print("DISMISSED")
@@ -141,6 +147,7 @@ class WriterVC: BaseVC {
     }
     
     @IBAction func fileOpenBtnPressed(_ sender: Any) {
+        self.tipView?.dismiss()
         documentPicker.delegate = self
         documentPicker.modalPresentationStyle = .fullScreen
         documentPicker.allowsMultipleSelection = false
@@ -150,7 +157,6 @@ class WriterVC: BaseVC {
     
     //Configure the textEditor, create and addd UIToolbar with custom options as text editor accessory view
     func configureTextView(){
-        //textEditor.backgroundColor = #colorLiteral(red: 0.9238191843, green: 0.9207934141, blue: 0.6188468337, alpha: 1)
         textEditor.textColor = UIColor.black
         textEditor.delegate = self
         textEditor.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 0)
@@ -161,10 +167,12 @@ class WriterVC: BaseVC {
         toolBar.items = [self.createToolBarItem(imageName: "doc.on.doc", tag: 0),flexibleSpace,self.createToolBarItem(imageName: "doc.on.clipboard", tag: 1),flexibleSpace,self.createToolBarItem(imageName: "scissors", tag: 2),flexibleSpace,self.createToolBarItem(imageName: "keyboard.chevron.compact.down", tag: 3)]
         toolBar.sizeToFit()
         textEditor.inputAccessoryView = toolBar
+        self.tabBarController?.delegate = self
         
     }
     //Set up global preference for Easy Tip View
     func setupTipViewPreference(){
+
         var prefrence = EasyTipView.Preferences()
         prefrence.drawing.foregroundColor = UIColor.white
         prefrence.drawing.backgroundColor = #colorLiteral(red: 0.737254902, green: 0, blue: 0.1764705882, alpha: 1)
@@ -320,6 +328,7 @@ extension WriterVC: UITextViewDelegate{
                     print(selectedText)
                     let selectedTextRect = textView.firstRect(for: selectedRange)
                     self.selectedWord = selectedText
+                    print("SELCTED TEXT IS \(self.selectedWord)")
                     self.getWordMeaning(word: selectedText, textRect: selectedTextRect)
                     
                     
@@ -368,5 +377,24 @@ extension WriterVC: UIDocumentPickerDelegate{
     }
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         self.dismiss(animated: true)
+    }
+}
+
+
+
+
+extension WriterVC: JishoVCDelegate{
+    func didPressBackButton() {
+        self.selectedWord = nil
+        self.tipView?.dismiss()
+    }
+}
+
+
+//To hide the tipview when switching the taps
+extension WriterVC: UITabBarControllerDelegate{
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        self.tipView?.isHidden = true
+        
     }
 }

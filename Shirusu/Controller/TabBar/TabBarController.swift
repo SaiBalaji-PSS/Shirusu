@@ -28,6 +28,7 @@ class TabBarController: UITabBarController {
         let flashCardVC = self.createVC(nibName: "FlashCardVC", title: "Flash Card", imageName: "menucard")
         let settingsVC = self.createVC(nibName: "SettingsVC", title: "Settings", imageName: "gear")
         self.viewControllers = [writerVC,sheetsVC,flashCardVC,settingsVC]
+        
     }
     
     func createVC(nibName: String,title: String,imageName: String) -> UIViewController{
