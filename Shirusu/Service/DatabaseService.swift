@@ -204,7 +204,7 @@ AND pos.value LIKE ?;
                 if let db = self.db{
                     var result = [WordSearchModel]()
                     let statement = try db.prepare(self.wordSearchWithPartsOfSpeech)
-                    for row in try statement.run(searchTerm.trimmingCharacters(in: .whitespacesAndNewlines) ,searchTerm.trimmingCharacters(in: .whitespacesAndNewlines) ,searchTerm.trimmingCharacters(in: .whitespacesAndNewlines),partsOfSpeech + "%"){
+                    for row in try statement.run( "%" + searchTerm + "%",searchTerm.trimmingCharacters(in: .whitespacesAndNewlines) ,searchTerm.trimmingCharacters(in: .whitespacesAndNewlines),partsOfSpeech + "%"){
                         let kanji = row[0] as? String ?? ""
                         let kana = row[1] as? String ?? ""
                         let englishMeaning = row[2] as? String ?? ""
