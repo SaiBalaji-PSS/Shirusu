@@ -10,4 +10,5 @@ target 'Shirusu' do
    pod 'SQLite.swift', '~> 0.15.3'
    pod 'DropDown', '2.3.13'
    pod 'RealmSwift', '~>10'
+   pod 'Shuffle-iOS'
 end

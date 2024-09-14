@@ -47,7 +47,10 @@ class SavedWordsListVC: BaseVC {
     @IBAction func selectWordsBtnPressed(_ sender: Any) {
     }
     @IBAction func reviewButtonPressed(_ sender: Any) {
-        print(self.selectedWordList.count)
+        let vc = CardReviewVC(nibName: "CardReviewVC", bundle: nil)
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+        //print(self.selectedWordList.count)
     }
     
 }

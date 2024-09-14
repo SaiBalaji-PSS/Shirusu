@@ -25,6 +25,9 @@
 		E43AA7512C88BD0D00C23AD9 /* JishoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E43AA74F2C88BD0D00C23AD9 /* JishoVC.xib */; };
 		E44B3A422C84097F00618393 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44B3A412C84097F00618393 /* CustomTextField.swift */; };
 		E44B3A452C8412E400618393 /* ClipBoardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44B3A442C8412E400618393 /* ClipBoardService.swift */; };
+		E455AD922C95E35F003372FE /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E455AD912C95E35F003372FE /* CardViewCell.swift */; };
+		E455AD962C95E47E003372FE /* CardReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E455AD942C95E47E003372FE /* CardReviewVC.swift */; };
+		E455AD972C95E47E003372FE /* CardReviewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E455AD952C95E47E003372FE /* CardReviewVC.xib */; };
 		E46967B42C8C22580066F125 /* WordSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46967B22C8C22580066F125 /* WordSearchVC.swift */; };
 		E46967B52C8C22580066F125 /* WordSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E46967B32C8C22580066F125 /* WordSearchVC.xib */; };
 		E46967B82C8C24E40066F125 /* WordSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46967B72C8C24E40066F125 /* WordSearchModel.swift */; };
@@ -68,6 +71,9 @@
 		E43AA74F2C88BD0D00C23AD9 /* JishoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JishoVC.xib; sourceTree = "<group>"; };
 		E44B3A412C84097F00618393 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		E44B3A442C8412E400618393 /* ClipBoardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipBoardService.swift; sourceTree = "<group>"; };
+		E455AD912C95E35F003372FE /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
+		E455AD942C95E47E003372FE /* CardReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardReviewVC.swift; sourceTree = "<group>"; };
+		E455AD952C95E47E003372FE /* CardReviewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardReviewVC.xib; sourceTree = "<group>"; };
 		E46967B22C8C22580066F125 /* WordSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSearchVC.swift; sourceTree = "<group>"; };
 		E46967B32C8C22580066F125 /* WordSearchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordSearchVC.xib; sourceTree = "<group>"; };
 		E46967B72C8C24E40066F125 /* WordSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSearchModel.swift; sourceTree = "<group>"; };
@@ -122,6 +128,7 @@
 		E42A540B2C909AE800A3E422 /* FlashCard */ = {
 			isa = PBXGroup;
 			children = (
+				E455AD932C95E468003372FE /* CardReview */,
 				E42A540C2C909AFB00A3E422 /* SavedWordsListVC.swift */,
 				E42A540D2C909AFB00A3E422 /* FlashCardVC.xib */,
 			);
@@ -198,6 +205,15 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		E455AD932C95E468003372FE /* CardReview */ = {
+			isa = PBXGroup;
+			children = (
+				E455AD942C95E47E003372FE /* CardReviewVC.swift */,
+				E455AD952C95E47E003372FE /* CardReviewVC.xib */,
+			);
+			path = CardReview;
+			sourceTree = "<group>";
+		};
 		E46967B12C8C22350066F125 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +237,7 @@
 			children = (
 				E46967BE2C8C32970066F125 /* WordSearchCell.swift */,
 				E46967BF2C8C32970066F125 /* WordSearchCell.xib */,
+				E455AD912C95E35F003372FE /* CardViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -340,6 +357,7 @@
 				E46F6A732C837CFA008EF23A /* SheetsVC.xib in Resources */,
 				E46967B52C8C22580066F125 /* WordSearchVC.xib in Resources */,
 				E43A9BFC2C83746B00716208 /* LaunchScreen.storyboard in Resources */,
+				E455AD972C95E47E003372FE /* CardReviewVC.xib in Resources */,
 				E43AA7512C88BD0D00C23AD9 /* JishoVC.xib in Resources */,
 				E43A9BF92C83746B00716208 /* Assets.xcassets in Resources */,
 				E42A540F2C909AFB00A3E422 /* FlashCardVC.xib in Resources */,
@@ -405,6 +423,7 @@
 			files = (
 				E46967B42C8C22580066F125 /* WordSearchVC.swift in Sources */,
 				E44B3A452C8412E400618393 /* ClipBoardService.swift in Sources */,
+				E455AD962C95E47E003372FE /* CardReviewVC.swift in Sources */,
 				E43A9BF42C83746A00716208 /* ViewController.swift in Sources */,
 				E43A9BF02C83746A00716208 /* AppDelegate.swift in Sources */,
 				E43A9BF22C83746A00716208 /* SceneDelegate.swift in Sources */,
@@ -418,6 +437,7 @@
 				E46967C02C8C32970066F125 /* WordSearchCell.swift in Sources */,
 				E4C4F0C52C8DCEDB005DFF4F /* SheetViewVC.swift in Sources */,
 				E4D393BA2C8F4D4300250565 /* FlashCardWordModel.swift in Sources */,
+				E455AD922C95E35F003372FE /* CardViewCell.swift in Sources */,
 				E4CD34452C847FF000A1ED4D /* DatabaseService.swift in Sources */,
 				E46967C32C8C6D5F0066F125 /* BaseVC.swift in Sources */,
 				E46967BA2C8C283F0066F125 /* CustomSearchTextField.swift in Sources */,

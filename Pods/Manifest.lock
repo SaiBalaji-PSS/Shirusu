@@ -6,6 +6,7 @@ PODS:
   - Realm/Headers (10.53.1)
   - RealmSwift (10.53.1):
     - Realm (= 10.53.1)
+  - Shuffle-iOS (0.5.0)
   - SQLite.swift (0.15.3):
     - SQLite.swift/standard (= 0.15.3)
   - SQLite.swift/standard (0.15.3)
@@ -14,6 +15,7 @@ DEPENDENCIES:
   - DropDown (= 2.3.13)
   - EasyTipView (~> 2.1)
   - RealmSwift (~> 10)
+  - Shuffle-iOS
   - SQLite.swift (~> 0.15.3)
 
 SPEC REPOS:
@@ -22,6 +24,7 @@ SPEC REPOS:
     - EasyTipView
     - Realm
     - RealmSwift
+    - Shuffle-iOS
     - SQLite.swift
 
 SPEC CHECKSUMS:
@@ -29,8 +32,9 @@ SPEC CHECKSUMS:
   EasyTipView: a92b6edc377b81c5ac18e9fd35d5ee78e9409488
   Realm: 82e4ea18703bf240dd443b5ceef68d6f9454ec49
   RealmSwift: 79a910911b6a5663b7570517c8237e3dbd2b0783
+  Shuffle-iOS: ff33658fb1e5eebd6a4724c156473e63754be9cb
   SQLite.swift: 8d054987f02728cc912b0eb5a9659650573a65a2
 
-PODFILE CHECKSUM: bed1d3d207bdd888773f54c915118a2e1951b580
+PODFILE CHECKSUM: 6a8004857798d48dfdbac984857128e73422164b
 
 COCOAPODS: 1.15.2
