@@ -11,6 +11,7 @@ import Shuffle_iOS
 class CardReviewVC: UIViewController {
     
     @IBOutlet weak var navBar: UIView!
+    private var savedWords = [FlashCardWordModel]()
     private var cardStack = SwipeCardStack()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,19 @@ class CardReviewVC: UIViewController {
         cardStack.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         cardStack.delegate = self
         cardStack.dataSource = self
+        self.getSavedWords()
+    }
+    
+    
+    
+    func getSavedWords(){
+        if let words = RealmManager.shared.readDataFromRealm(modelType: FlashCardWordModel.self){
+            self.savedWords = Array(words)
+            DispatchQueue.main.async {
+                self.cardStack.reloadData()
+            }
+        }
+    
     }
 
 
@@ -34,11 +48,12 @@ class CardReviewVC: UIViewController {
 extension CardReviewVC: SwipeCardStackDelegate, SwipeCardStackDataSource{
     func cardStack(_ cardStack: Shuffle_iOS.SwipeCardStack, cardForIndexAt index: Int) -> Shuffle_iOS.SwipeCard {
         let cardCell = CardViewCell()
+        cardCell.updateCard(word: self.savedWords[index])
         return cardCell
     }
     
     func numberOfCards(in cardStack: Shuffle_iOS.SwipeCardStack) -> Int {
-        return 10 
+        return self.savedWords.count
     }
     
     
