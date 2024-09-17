@@ -9,12 +9,16 @@ import Foundation
 import Shuffle_iOS
 import UIKit
 
+protocol CardViewDelegate: AnyObject{
+    func didPressCard()
+}
 class CardViewCell: SwipeCard{
     private var topLabel = UILabel()
     private var middleLabel = UILabel()
     private var bottomLabel = UILabel()
     private var isFlipped = false
-
+    weak var delegate: CardViewDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -74,6 +78,7 @@ class CardViewCell: SwipeCard{
                 }
             }
         }
+        self.delegate?.didPressCard()
     }
     
     func updateCard(word: FlashCardWordModel){

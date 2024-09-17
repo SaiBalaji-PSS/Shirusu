@@ -19,10 +19,18 @@ class TabBarController: UITabBarController {
     
     
     func createTabBar(){
-        tabBar.backgroundColor = #colorLiteral(red: 0.737254902, green: 0, blue: 0.1764705882, alpha: 1)
-        self.tabBar.isTranslucent = false
-        self.tabBar.tintColor = UIColor.white
-        self.tabBar.unselectedItemTintColor = UIColor(red: 184/255, green: 134/255, blue: 11/255, alpha: 1) 
+        let appearance = UITabBarAppearance()
+        appearance.backgroundColor =  #colorLiteral(red: 0.737254902, green: 0, blue: 0.1764705882, alpha: 1)
+        let itemAppearances = UITabBarItemAppearance()
+        itemAppearances.normal.iconColor = UIColor(red: 184/255, green: 134/255, blue: 11/255, alpha: 1)
+        itemAppearances.normal.titleTextAttributes = [.foregroundColor: UIColor(red: 184/255, green: 134/255, blue: 11/255, alpha: 1)]
+        itemAppearances.selected.titleTextAttributes = [.foregroundColor:UIColor.white]
+        itemAppearances.selected.iconColor = UIColor.white
+        appearance.stackedLayoutAppearance = itemAppearances
+        tabBar.standardAppearance = appearance
+        tabBar.scrollEdgeAppearance = appearance
+        
+
      
         let writerVC = self.createVC(nibName: "WriterVC", title: "Writer", imageName: "keyboard")
         

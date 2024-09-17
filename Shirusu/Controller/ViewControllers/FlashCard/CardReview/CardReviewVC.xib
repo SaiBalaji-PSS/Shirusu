@@ -22,8 +22,25 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5a-A4-5kf">
                     <rect key="frame" x="0.0" y="59" width="393" height="65"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XuW-An-u2y">
+                            <rect key="frame" x="8" y="7.6666666666666714" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="JTh-fV-28m"/>
+                                <constraint firstAttribute="height" constant="50" id="fbM-vw-HWL"/>
+                            </constraints>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="arrow.left" catalog="system"/>
+                            <connections>
+                                <action selector="backBtnPressed:" destination="-1" eventType="touchUpInside" id="fqv-ao-Pdt"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.73725490199999999" green="0.0" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="XuW-An-u2y" firstAttribute="leading" secondItem="j5a-A4-5kf" secondAttribute="leading" constant="8" id="3p6-8b-h76"/>
+                        <constraint firstItem="XuW-An-u2y" firstAttribute="centerY" secondItem="j5a-A4-5kf" secondAttribute="centerY" id="e7u-Mj-EUY"/>
                         <constraint firstAttribute="height" constant="65" id="mIi-Qm-MGG"/>
                     </constraints>
                 </view>
@@ -39,6 +56,7 @@
         </view>
     </objects>
     <resources>
+        <image name="arrow.left" catalog="system" width="128" height="95"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

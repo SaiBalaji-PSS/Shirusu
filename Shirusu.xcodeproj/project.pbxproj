@@ -47,6 +47,8 @@
 		E4CD34452C847FF000A1ED4D /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CD34442C847FF000A1ED4D /* DatabaseService.swift */; };
 		E4D393BA2C8F4D4300250565 /* FlashCardWordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D393B92C8F4D4300250565 /* FlashCardWordModel.swift */; };
 		E4D393BC2C8F50C200250565 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D393BB2C8F50C200250565 /* RealmManager.swift */; };
+		E4DCF2A42C99E0CF00DB1F5B /* ScoreCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DCF2A22C99E0CF00DB1F5B /* ScoreCardVC.swift */; };
+		E4DCF2A52C99E0CF00DB1F5B /* ScoreCardVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4DCF2A32C99E0CF00DB1F5B /* ScoreCardVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +95,8 @@
 		E4CD34442C847FF000A1ED4D /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		E4D393B92C8F4D4300250565 /* FlashCardWordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardWordModel.swift; sourceTree = "<group>"; };
 		E4D393BB2C8F50C200250565 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		E4DCF2A22C99E0CF00DB1F5B /* ScoreCardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCardVC.swift; sourceTree = "<group>"; };
+		E4DCF2A32C99E0CF00DB1F5B /* ScoreCardVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreCardVC.xib; sourceTree = "<group>"; };
 		F114BEE045FF0A1E7E0A62CA /* Pods_Shirusu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shirusu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -210,6 +214,8 @@
 			children = (
 				E455AD942C95E47E003372FE /* CardReviewVC.swift */,
 				E455AD952C95E47E003372FE /* CardReviewVC.xib */,
+				E4DCF2A22C99E0CF00DB1F5B /* ScoreCardVC.swift */,
+				E4DCF2A32C99E0CF00DB1F5B /* ScoreCardVC.xib */,
 			);
 			path = CardReview;
 			sourceTree = "<group>";
@@ -369,6 +375,7 @@
 				E400EE6A2C8C9B1200F5FFB2 /* SaveDialogBoxVC.xib in Resources */,
 				E46F6A6F2C837CF0008EF23A /* SettingsVC.xib in Resources */,
 				E4CD34432C847FD900A1ED4D /* JMdict_e.db in Resources */,
+				E4DCF2A52C99E0CF00DB1F5B /* ScoreCardVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +449,7 @@
 				E46967C32C8C6D5F0066F125 /* BaseVC.swift in Sources */,
 				E46967BA2C8C283F0066F125 /* CustomSearchTextField.swift in Sources */,
 				E43A9C0A2C83775400716208 /* WriterVC.swift in Sources */,
+				E4DCF2A42C99E0CF00DB1F5B /* ScoreCardVC.swift in Sources */,
 				E46F6A6E2C837CF0008EF23A /* SettingsVC.swift in Sources */,
 				E46F6A722C837CFA008EF23A /* SheetsVC.swift in Sources */,
 				E4064AF92C8D9FC000305EA6 /* FileManagerService.swift in Sources */,

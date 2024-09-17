@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -37,6 +38,7 @@
                                 <constraint firstAttribute="height" constant="35" id="EUy-F0-ak9"/>
                                 <constraint firstAttribute="width" constant="50" id="G8U-oa-Zkb"/>
                             </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="arrow.left" catalog="system"/>
                             <connections>
@@ -63,9 +65,10 @@
                                     </connections>
                                 </button>
                             </subviews>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </stackView>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" red="0.73725490199999999" green="0.0" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="i7Z-Br-c92" firstAttribute="centerY" secondItem="8Qe-Kl-rFb" secondAttribute="centerY" id="0NC-34-QUl"/>
                         <constraint firstItem="GL6-QH-gTh" firstAttribute="centerY" secondItem="8Qe-Kl-rFb" secondAttribute="centerY" id="JkQ-yc-cCf"/>
@@ -76,6 +79,7 @@
                 </view>
                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LVV-zV-8Wh">
                     <rect key="frame" x="8" y="806" width="377" height="4"/>
+                    <color key="progressTintColor" red="0.73725490199999999" green="0.0" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </progressView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

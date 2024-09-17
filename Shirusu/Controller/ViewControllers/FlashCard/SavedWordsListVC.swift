@@ -9,6 +9,7 @@ import UIKit
 
 class SavedWordsListVC: BaseVC {
     @IBOutlet weak var tableView: UITableView!
+    private var showTickMark = false
     private var savedWords = [FlashCardWordModel]()
     private var selectedWordList = [FlashCardWordModel]()
     override  func loadView() {
@@ -35,8 +36,10 @@ class SavedWordsListVC: BaseVC {
         self.tableView.register(UINib(nibName: "WordSearchCell", bundle: nil), forCellReuseIdentifier: "WordSearchCell")
     }
     func getAllSavedWords(){
+        
         if let savedWords = RealmManager.shared.readDataFromRealm(modelType: FlashCardWordModel.self){
             self.savedWords = Array(savedWords)
+            self.selectedWordList.removeAll()
             self.tableView.reloadData()
         }
         
@@ -45,10 +48,13 @@ class SavedWordsListVC: BaseVC {
     
     
     @IBAction func selectWordsBtnPressed(_ sender: Any) {
+        self.showTickMark.toggle()
+        self.tableView.reloadData()
     }
     @IBAction func reviewButtonPressed(_ sender: Any) {
         let vc = CardReviewVC(nibName: "CardReviewVC", bundle: nil)
         vc.modalPresentationStyle = .fullScreen
+        vc.savedWords = self.selectedWordList.isEmpty ? self.savedWords : self.selectedWordList
         self.present(vc, animated: true)
         //print(self.selectedWordList.count)
     }
@@ -65,6 +71,7 @@ extension SavedWordsListVC: UITableViewDelegate, UITableViewDataSource{
             cell.updateCellSavedWordsList(word: self.savedWords[indexPath.row])
             cell.delegate = self
             cell.index = indexPath
+            cell.tickImageView.isHidden = !self.showTickMark
             return cell
         }
         return UITableViewCell()

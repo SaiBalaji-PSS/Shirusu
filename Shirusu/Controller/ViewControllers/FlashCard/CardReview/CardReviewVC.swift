@@ -8,17 +8,30 @@
 import UIKit
 import Shuffle_iOS
 
-class CardReviewVC: UIViewController {
+class CardReviewVC: BaseVC {
     
     @IBOutlet weak var navBar: UIView!
-    private var savedWords = [FlashCardWordModel]()
+    var savedWords = [FlashCardWordModel]()
     private var cardStack = SwipeCardStack()
+    private var currentScore = 0
+    private var cardFlipCount = 0
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.configureUI()
+        
+       
+    }
+    
+    
+    @IBAction func backBtnPressed(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+    
+    func configureUI(){
         self.view.addSubview(cardStack)
-        self.navBar.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+
         cardStack.translatesAutoresizingMaskIntoConstraints = false
         cardStack.topAnchor.constraint(equalTo: navBar.bottomAnchor).isActive = true
         cardStack.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor).isActive = true
@@ -26,19 +39,25 @@ class CardReviewVC: UIViewController {
         cardStack.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         cardStack.delegate = self
         cardStack.dataSource = self
-        self.getSavedWords()
+        self.setUpStatusBarColor()
     }
     
-    
-    
-    func getSavedWords(){
-        if let words = RealmManager.shared.readDataFromRealm(modelType: FlashCardWordModel.self){
-            self.savedWords = Array(words)
-            DispatchQueue.main.async {
-                self.cardStack.reloadData()
-            }
+    func handleGameOver(){
+        let highScore = UserDefaults.standard.integer(forKey: "HIGH_SCORE")
+        currentScore = currentScore - cardFlipCount
+        if currentScore < 0{
+            currentScore = 0
         }
-    
+        if currentScore > highScore{
+           UserDefaults.standard.setValue(currentScore, forKey: "HIGH_SCORE")
+           print(currentScore)
+        }
+        let scoreCardVC = ScoreCardVC(nibName: "ScoreCardVC", bundle: nil)
+        scoreCardVC.modalPresentationStyle = .overCurrentContext
+        scoreCardVC.modalTransitionStyle = .coverVertical
+        scoreCardVC.currentScore = self.currentScore
+        scoreCardVC.delegate = self
+        self.present(scoreCardVC, animated: true)
     }
 
 
@@ -48,6 +67,7 @@ class CardReviewVC: UIViewController {
 extension CardReviewVC: SwipeCardStackDelegate, SwipeCardStackDataSource{
     func cardStack(_ cardStack: Shuffle_iOS.SwipeCardStack, cardForIndexAt index: Int) -> Shuffle_iOS.SwipeCard {
         let cardCell = CardViewCell()
+        cardCell.delegate = self
         cardCell.updateCard(word: self.savedWords[index])
         return cardCell
     }
@@ -56,5 +76,40 @@ extension CardReviewVC: SwipeCardStackDelegate, SwipeCardStackDataSource{
         return self.savedWords.count
     }
     
+    func cardStack(_ cardStack: SwipeCardStack, didSwipeCardAt index: Int, with direction: SwipeDirection) {
+        
+        if direction == .left{
+            self.currentScore = currentScore - 1
+            if self.currentScore < 0{
+                self.currentScore = 0
+            }
+        }
+        else if direction == .right{
+            self.currentScore = currentScore + 1
+        }
+    }
+    func didSwipeAllCards(_ cardStack: SwipeCardStack) {
+        
+        
+        //Show score card
+        self.handleGameOver()
+        
+    }
     
+}
+
+
+extension CardReviewVC: ScoreCardDelegate{
+    func restartBtnPressed() {
+        self.currentScore = 0
+        self.cardFlipCount = 0
+        self.cardStack.reloadData()
+    }
+}
+
+
+extension CardReviewVC: CardViewDelegate{
+    func didPressCard() {
+        self.cardFlipCount = self.cardFlipCount + 1
+    }
 }
