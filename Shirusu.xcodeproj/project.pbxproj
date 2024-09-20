@@ -37,8 +37,6 @@
 		E46967C12C8C32970066F125 /* WordSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E46967BF2C8C32970066F125 /* WordSearchCell.xib */; };
 		E46967C32C8C6D5F0066F125 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46967C22C8C6D5F0066F125 /* BaseVC.swift */; };
 		E46F6A672C837A2A008EF23A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F6A662C837A2A008EF23A /* TabBarController.swift */; };
-		E46F6A6E2C837CF0008EF23A /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F6A6C2C837CF0008EF23A /* SettingsVC.swift */; };
-		E46F6A6F2C837CF0008EF23A /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E46F6A6D2C837CF0008EF23A /* SettingsVC.xib */; };
 		E46F6A722C837CFA008EF23A /* SheetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F6A702C837CFA008EF23A /* SheetsVC.swift */; };
 		E46F6A732C837CFA008EF23A /* SheetsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E46F6A712C837CFA008EF23A /* SheetsVC.xib */; };
 		E4C4F0C52C8DCEDB005DFF4F /* SheetViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4F0C32C8DCEDB005DFF4F /* SheetViewVC.swift */; };
@@ -85,8 +83,6 @@
 		E46967BF2C8C32970066F125 /* WordSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordSearchCell.xib; sourceTree = "<group>"; };
 		E46967C22C8C6D5F0066F125 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		E46F6A662C837A2A008EF23A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		E46F6A6C2C837CF0008EF23A /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
-		E46F6A6D2C837CF0008EF23A /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
 		E46F6A702C837CFA008EF23A /* SheetsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetsVC.swift; sourceTree = "<group>"; };
 		E46F6A712C837CFA008EF23A /* SheetsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SheetsVC.xib; sourceTree = "<group>"; };
 		E4C4F0C32C8DCEDB005DFF4F /* SheetViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewVC.swift; sourceTree = "<group>"; };
@@ -132,6 +128,7 @@
 		E42A540B2C909AE800A3E422 /* FlashCard */ = {
 			isa = PBXGroup;
 			children = (
+				E48F50822C9C77E400652DDC /* BottomSheet */,
 				E455AD932C95E468003372FE /* CardReview */,
 				E42A540C2C909AFB00A3E422 /* SavedWordsListVC.swift */,
 				E42A540D2C909AFB00A3E422 /* FlashCardVC.xib */,
@@ -263,7 +260,6 @@
 				E42A540B2C909AE800A3E422 /* FlashCard */,
 				E46967B12C8C22350066F125 /* Search */,
 				E46F6A6B2C837CDB008EF23A /* Sheets */,
-				E46F6A6A2C837CD5008EF23A /* Settings */,
 				E46F6A692C837CD0008EF23A /* Writer */,
 			);
 			path = ViewControllers;
@@ -280,15 +276,6 @@
 			path = Writer;
 			sourceTree = "<group>";
 		};
-		E46F6A6A2C837CD5008EF23A /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				E46F6A6C2C837CF0008EF23A /* SettingsVC.swift */,
-				E46F6A6D2C837CF0008EF23A /* SettingsVC.xib */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
 		E46F6A6B2C837CDB008EF23A /* Sheets */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +285,13 @@
 				E4C4F0C42C8DCEDB005DFF4F /* SheetViewVC.xib */,
 			);
 			path = Sheets;
+			sourceTree = "<group>";
+		};
+		E48F50822C9C77E400652DDC /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BottomSheet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,7 +367,6 @@
 				E46967BC2C8C28500066F125 /* CustomSearchTextField.xib in Resources */,
 				E43A9C0B2C83775400716208 /* WriterVC.xib in Resources */,
 				E400EE6A2C8C9B1200F5FFB2 /* SaveDialogBoxVC.xib in Resources */,
-				E46F6A6F2C837CF0008EF23A /* SettingsVC.xib in Resources */,
 				E4CD34432C847FD900A1ED4D /* JMdict_e.db in Resources */,
 				E4DCF2A52C99E0CF00DB1F5B /* ScoreCardVC.xib in Resources */,
 			);
@@ -450,7 +443,6 @@
 				E46967BA2C8C283F0066F125 /* CustomSearchTextField.swift in Sources */,
 				E43A9C0A2C83775400716208 /* WriterVC.swift in Sources */,
 				E4DCF2A42C99E0CF00DB1F5B /* ScoreCardVC.swift in Sources */,
-				E46F6A6E2C837CF0008EF23A /* SettingsVC.swift in Sources */,
 				E46F6A722C837CFA008EF23A /* SheetsVC.swift in Sources */,
 				E4064AF92C8D9FC000305EA6 /* FileManagerService.swift in Sources */,
 			);

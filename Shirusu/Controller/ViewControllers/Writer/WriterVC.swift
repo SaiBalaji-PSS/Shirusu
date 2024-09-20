@@ -60,13 +60,12 @@ class WriterVC: BaseVC {
     
     
 
-    @IBAction func undoBtnPressed(_ sender: Any) {
+    @IBAction func newSheetBtnPressed(_ sender: Any) {
 
-        if let canUndo = textEditor.undoManager?.canUndo{
-            if canUndo{
-                textEditor.undoManager?.undo()
-            }
-        }
+        self.textEditor.text = ""
+        self.view.endEditing(true)
+        self.isSelectModeEnalbed = false 
+        //show toast
     }
     
     @IBAction func addToListBtnPressed(_ sender: Any) {
@@ -120,7 +119,7 @@ class WriterVC: BaseVC {
     
     
     @IBAction func selectModeBtnPressed(_ sender: UIButton) {
-
+        
         if isSelectModeEnalbed == false{
             self.jishoBtn.isHidden = false
             print("IS SELECTION MODE ENABLED \(isSelectModeEnalbed)")

@@ -44,8 +44,8 @@ class CardViewCell: SwipeCard{
         
         addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        stackView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        stackView.leftAnchor.constraint(equalTo: leftAnchor,constant: 8).isActive = true
+        stackView.rightAnchor.constraint(equalTo: rightAnchor,constant: -8).isActive = true
         stackView.topAnchor.constraint(equalTo: topAnchor,constant: 20).isActive = true
         stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         self.backgroundColor = UIColor.white
@@ -81,9 +81,12 @@ class CardViewCell: SwipeCard{
         self.delegate?.didPressCard()
     }
     
-    func updateCard(word: FlashCardWordModel){
+    func updateCard(word: FlashCardWordModel,fontSize: Int){
+        self.topLabel.font = UIFont.systemFont(ofSize: CGFloat(fontSize), weight: .medium)
+        self.middleLabel.font = UIFont.systemFont(ofSize: CGFloat(fontSize), weight: .bold)
+        //self.bottomLabel.font = UIFont.systemFont(ofSize: CGFloat(fontSize), weight: .medium)
         self.topLabel.text = word.kana
-       
+        
         self.middleLabel.text = word.kanji
         if word.kanji.isEmpty{
             self.middleLabel.isHidden = true

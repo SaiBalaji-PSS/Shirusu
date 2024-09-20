@@ -7,26 +7,67 @@
 
 import UIKit
 import Shuffle_iOS
+import DropDown
 
 class CardReviewVC: BaseVC {
     
     @IBOutlet weak var navBar: UIView!
+    
+    @IBOutlet weak var fontSizeBtn: UIButton!
     var savedWords = [FlashCardWordModel]()
     private var cardStack = SwipeCardStack()
     private var currentScore = 0
     private var cardFlipCount = 0
+    let dropDown = DropDown()
+    private let fontSizes: [String:Int] = ["Small":34,"Medium":60,"Large":80]
+    private var selectedFontSize = 34
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.configureUI()
         
+        
        
     }
     
+    @IBAction func shuffleBtnPressed(_ sender: Any) {
+        self.savedWords.shuffle()
+        self.cardStack.reloadData()
+        //show toast
+        
+    }
+    @IBAction func fontSizeBtnPressed(_ sender: Any) {
+        dropDown.show()
+    }
     
+    @IBAction func helpBtnPressed(_ sender: Any) {
+        let avc = UIAlertController(title: "Help", message: """
+        - Swipe Right: If you swipe right on a card, it means you got the answer right. Your score will increase by 1.
+        
+        - Swipe Left: If you swipe left, it means you got the answer wrong. Your score will decrease by 1.
+        
+        - Tap to Flip: If you tap the card to reveal the answer, it means you got the answer wrong. Your score will decrease by 1.
+        """, preferredStyle: .alert)
+        avc.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(avc, animated: true)
+        
+    }
     @IBAction func backBtnPressed(_ sender: Any) {
         self.dismiss(animated: true)
+    }
+    
+    
+    @IBAction func resetBtnPressed(_ sender: Any) {
+        let avc = UIAlertController(title: "Rest score", message: "", preferredStyle: .alert)
+        avc.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+            UserDefaults.standard.setValue(0, forKey: "HIGH_SCORE")
+            //show toast
+        }))
+        avc.addAction(UIAlertAction(title: "No", style: .cancel, handler: { _ in
+            
+        }))
+        self.present(avc, animated: true)
     }
     
     func configureUI(){
@@ -40,6 +81,14 @@ class CardReviewVC: BaseVC {
         cardStack.delegate = self
         cardStack.dataSource = self
         self.setUpStatusBarColor()
+        dropDown.dataSource = Array(fontSizes.keys).sorted()
+        dropDown.anchorView = fontSizeBtn
+        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.selectedFontSize = self.fontSizes[item] ?? 18
+            self.cardStack.reloadData()
+        }
+        
+        
     }
     
     func handleGameOver(){
@@ -68,7 +117,7 @@ extension CardReviewVC: SwipeCardStackDelegate, SwipeCardStackDataSource{
     func cardStack(_ cardStack: Shuffle_iOS.SwipeCardStack, cardForIndexAt index: Int) -> Shuffle_iOS.SwipeCard {
         let cardCell = CardViewCell()
         cardCell.delegate = self
-        cardCell.updateCard(word: self.savedWords[index])
+        cardCell.updateCard(word: self.savedWords[index],fontSize: self.selectedFontSize)
         return cardCell
     }
     
@@ -113,3 +162,4 @@ extension CardReviewVC: CardViewDelegate{
         self.cardFlipCount = self.cardFlipCount + 1
     }
 }
+

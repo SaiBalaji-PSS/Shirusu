@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardReviewVC" customModule="Shirusu" customModuleProvider="target">
             <connections>
+                <outlet property="fontSizeBtn" destination="LpX-W4-6Ti" id="xyg-XN-FE7"/>
                 <outlet property="navBar" destination="j5a-A4-5kf" id="IW8-uB-KcW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -36,11 +38,61 @@
                                 <action selector="backBtnPressed:" destination="-1" eventType="touchUpInside" id="fqv-ao-Pdt"/>
                             </connections>
                         </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1B7-4f-yOq">
+                            <rect key="frame" x="115.66666666666666" y="15.333333333333332" width="269.33333333333337" height="34.333333333333343"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1r-I6-yTE">
+                                    <rect key="frame" x="0.0" y="0.0" width="67.333333333333329" height="34.333333333333336"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain">
+                                        <imageReference key="image" image="questionmark.circle" catalog="system" symbolScale="large"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="helpBtnPressed:" destination="-1" eventType="touchUpInside" id="vOR-5U-7p9"/>
+                                        <action selector="shuffleBtnPressed:" destination="-1" eventType="touchUpInside" id="mYF-jx-vlp"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="am1-pV-jkB">
+                                    <rect key="frame" x="67.333333333333343" y="0.0" width="67.333333333333343" height="34.333333333333336"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain">
+                                        <imageReference key="image" image="shuffle" catalog="system" symbolScale="large"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="shuffleBtnPressed:" destination="-1" eventType="touchUpInside" id="bwo-rx-Fe7"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LpX-W4-6Ti">
+                                    <rect key="frame" x="134.66666666666669" y="0.0" width="67.333333333333314" height="34.333333333333336"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain">
+                                        <imageReference key="image" image="textformat.size.ja" catalog="system" symbolScale="large"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="fontSizeBtnPressed:" destination="-1" eventType="touchUpInside" id="Ieo-cN-h7w"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhN-cJ-6aY">
+                                    <rect key="frame" x="202" y="0.0" width="67.333333333333314" height="34.333333333333336"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Reset"/>
+                                    <connections>
+                                        <action selector="resetBtnPressed:" destination="-1" eventType="touchUpInside" id="GqK-1i-2cL"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
                     </subviews>
                     <color key="backgroundColor" red="0.73725490199999999" green="0.0" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="XuW-An-u2y" firstAttribute="leading" secondItem="j5a-A4-5kf" secondAttribute="leading" constant="8" id="3p6-8b-h76"/>
+                        <constraint firstAttribute="trailing" secondItem="1B7-4f-yOq" secondAttribute="trailing" constant="8" id="8dU-Zz-ncm"/>
                         <constraint firstItem="XuW-An-u2y" firstAttribute="centerY" secondItem="j5a-A4-5kf" secondAttribute="centerY" id="e7u-Mj-EUY"/>
+                        <constraint firstItem="1B7-4f-yOq" firstAttribute="centerY" secondItem="j5a-A4-5kf" secondAttribute="centerY" id="gmm-uY-q4q"/>
                         <constraint firstAttribute="height" constant="65" id="mIi-Qm-MGG"/>
                     </constraints>
                 </view>
@@ -57,6 +109,9 @@
     </objects>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="95"/>
+        <image name="questionmark.circle" catalog="system" width="128" height="123"/>
+        <image name="shuffle" catalog="system" width="128" height="95"/>
+        <image name="textformat.size.ja" catalog="system" width="128" height="71"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
