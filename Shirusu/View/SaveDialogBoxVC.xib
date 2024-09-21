@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TFH-GR-v1g">
-                    <rect key="frame" x="8" y="325.66666666666669" width="377" height="201.00000000000006"/>
+                    <rect key="frame" x="8" y="276" width="377" height="300"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the file name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcY-gV-pbT">
                             <rect key="frame" x="18" y="8" width="359" height="49"/>
@@ -43,28 +43,13 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <stackView opaque="NO" contentMode="scaleToFill" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="ao6-wG-xTw">
-                            <rect key="frame" x="24.666666666666657" y="150" width="328" height="43"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="VFK-dr-emi">
+                            <rect key="frame" x="8" y="153" width="361" height="139"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGL-DJ-STV">
-                                    <rect key="frame" x="0.0" y="0.0" width="134" height="43"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="43" id="GiO-Yo-HLk"/>
-                                        <constraint firstAttribute="width" constant="134" id="efw-3O-sNz"/>
-                                    </constraints>
-                                    <color key="tintColor" red="0.73725490199999999" green="0.0" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
-                                    <connections>
-                                        <action selector="cancelBtnPressed:" destination="-1" eventType="touchUpInside" id="dIH-bK-KXG"/>
-                                    </connections>
-                                </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYV-uf-3Zf">
-                                    <rect key="frame" x="194" y="0.0" width="134" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="361" height="43"/>
                                     <color key="backgroundColor" red="0.73725490199999999" green="0.0" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="134" id="5Je-yI-unq"/>
                                         <constraint firstAttribute="height" constant="43" id="ag1-O6-3Ko"/>
                                     </constraints>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -72,6 +57,32 @@
                                     <buttonConfiguration key="configuration" style="plain" title="Save"/>
                                     <connections>
                                         <action selector="saveBtnPressed:" destination="-1" eventType="touchUpInside" id="JpF-CY-gbO"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MmQ-Dd-Xah">
+                                    <rect key="frame" x="0.0" y="48" width="361" height="43"/>
+                                    <color key="backgroundColor" red="0.3529411764705882" green="0.63921568627450975" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="43" id="Msm-MO-VeK"/>
+                                    </constraints>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Save to iCloud Drive"/>
+                                    <connections>
+                                        <action selector="icloudDriveSaveBtnPressed:" destination="-1" eventType="touchUpInside" id="D9h-Wb-BwW"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGL-DJ-STV">
+                                    <rect key="frame" x="0.0" y="96" width="361" height="43"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="43" id="GiO-Yo-HLk"/>
+                                    </constraints>
+                                    <color key="tintColor" red="0.73725490199999999" green="0.0" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                    <connections>
+                                        <action selector="cancelBtnPressed:" destination="-1" eventType="touchUpInside" id="dIH-bK-KXG"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -88,16 +99,17 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="ao6-wG-xTw" secondAttribute="bottom" constant="8" id="27S-GH-Bze"/>
-                        <constraint firstAttribute="height" constant="201" id="2gh-9n-jEK"/>
+                        <constraint firstItem="VFK-dr-emi" firstAttribute="leading" secondItem="TFH-GR-v1g" secondAttribute="leading" constant="8" id="1ze-9E-gm2"/>
+                        <constraint firstAttribute="height" constant="300" id="2gh-9n-jEK"/>
                         <constraint firstItem="sdV-Oq-5Vy" firstAttribute="top" secondItem="BcY-gV-pbT" secondAttribute="bottom" constant="10" id="Agg-13-dcx"/>
+                        <constraint firstAttribute="trailing" secondItem="VFK-dr-emi" secondAttribute="trailing" constant="8" id="Baf-mD-pTK"/>
                         <constraint firstAttribute="trailing" secondItem="B4g-Gj-MFa" secondAttribute="trailing" constant="16" id="Dz1-I2-2uz"/>
                         <constraint firstAttribute="trailing" secondItem="BcY-gV-pbT" secondAttribute="trailing" id="Iib-c7-O1K"/>
                         <constraint firstItem="B4g-Gj-MFa" firstAttribute="top" secondItem="sdV-Oq-5Vy" secondAttribute="bottom" constant="2" id="QSF-tD-e7y"/>
                         <constraint firstItem="sdV-Oq-5Vy" firstAttribute="leading" secondItem="TFH-GR-v1g" secondAttribute="leading" constant="16" id="QiD-8A-Ujm"/>
                         <constraint firstItem="BcY-gV-pbT" firstAttribute="leading" secondItem="TFH-GR-v1g" secondAttribute="leading" constant="18" id="ULH-79-qxq"/>
+                        <constraint firstAttribute="bottom" secondItem="VFK-dr-emi" secondAttribute="bottom" constant="8" id="bFX-kY-91A"/>
                         <constraint firstAttribute="trailing" secondItem="sdV-Oq-5Vy" secondAttribute="trailing" constant="16" id="c7Q-yu-GLV"/>
-                        <constraint firstItem="ao6-wG-xTw" firstAttribute="centerX" secondItem="TFH-GR-v1g" secondAttribute="centerX" id="f67-8n-GcB"/>
                         <constraint firstItem="B4g-Gj-MFa" firstAttribute="leading" secondItem="TFH-GR-v1g" secondAttribute="leading" constant="16" id="ggs-HU-cK2"/>
                         <constraint firstItem="BcY-gV-pbT" firstAttribute="top" secondItem="TFH-GR-v1g" secondAttribute="top" constant="8" id="pye-OC-0l0"/>
                     </constraints>

@@ -8,6 +8,18 @@
 	<true/>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+    <key>NSUbiquitousContainers</key>
+    <dict>
+        <key>iCloud.sheets</key>
+        <dict>
+            <key>NSUbiquitousContainerSupportedFolderLevels</key>
+            <string>Any</string>
+            <key>NSUbiquitousContainerName</key>
+            <string>Saved Sheets</string>
+            <key>NSUbiquitousContainerIsDocumentScopePublic</key>
+            <true/>
+        </dict>
+    </dict>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

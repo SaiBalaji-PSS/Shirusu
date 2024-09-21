@@ -9,6 +9,7 @@ import UIKit
 
 protocol SaveDialogBoxDelegate: AnyObject{
     func saveBtnPressed(fileName: String?)
+    func icloudSaveBtnPressed(fileName: String?)
     func cancelBtnPressed()
     
 }
@@ -49,7 +50,23 @@ class SaveDialogBoxVC: UIViewController {
        
     }
     
-
+    @IBAction func icloudDriveSaveBtnPressed(_ sender: Any) {
+        if let fileName = fileNameTextField.text{
+            if fileName.isEmpty{
+                self.alertLbl.isHidden = false
+            }
+            else{
+              
+                self.alertLbl.isHidden = true
+                self.dismiss(animated: true)
+                self.delegate?.icloudSaveBtnPressed(fileName: fileName)
+            }
+        }
+        else{
+            self.alertLbl.isHidden = false
+        }
+    }
+    
     @IBAction func cancelBtnPressed(_ sender: Any) {
         self.delegate?.cancelBtnPressed()
         self.dismiss(animated: true)

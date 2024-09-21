@@ -55,6 +55,7 @@
 		E400EE672C8C9B1200F5FFB2 /* SaveDialogBoxVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDialogBoxVC.swift; sourceTree = "<group>"; };
 		E400EE682C8C9B1200F5FFB2 /* SaveDialogBoxVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveDialogBoxVC.xib; sourceTree = "<group>"; };
 		E4064AF82C8D9FC000305EA6 /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
+		E41655AF2C9F126A00CE70E8 /* Shirusu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shirusu.entitlements; sourceTree = "<group>"; };
 		E42A540C2C909AFB00A3E422 /* SavedWordsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedWordsListVC.swift; sourceTree = "<group>"; };
 		E42A540D2C909AFB00A3E422 /* FlashCardVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlashCardVC.xib; sourceTree = "<group>"; };
 		E43A9BEC2C83746A00716208 /* Shirusu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shirusu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +158,7 @@
 		E43A9BEE2C83746A00716208 /* Shirusu */ = {
 			isa = PBXGroup;
 			children = (
+				E41655AF2C9F126A00CE70E8 /* Shirusu.entitlements */,
 				E46967B62C8C24DC0066F125 /* Model */,
 				E4CD34422C847FD900A1ED4D /* JMdict_e.db */,
 				E44B3A432C8412D600618393 /* Service */,
@@ -595,8 +597,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Shirusu/Shirusu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 88P8C7S87H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Shirusu/Info.plist;
@@ -629,8 +632,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Shirusu/Shirusu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 88P8C7S87H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Shirusu/Info.plist;

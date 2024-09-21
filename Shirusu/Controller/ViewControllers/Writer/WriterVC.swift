@@ -34,6 +34,7 @@ class WriterVC: BaseVC {
         self.setupKeyboardObservers()
         self.jishoBtn.isHidden = true
         
+        
     }
     
     func setupKeyboardObservers(){
@@ -353,13 +354,46 @@ extension WriterVC: UITextViewDelegate{
 
 extension WriterVC: WordSearchVCDelegate{
     func didSelectWord(selectedWord: WordSearchModel) {
-        self.textEditor.text.append("\(selectedWord.kanji)")
+        if selectedWord.kanji.containsKanji() == false || selectedWord.kanji.containsHiragana() == false{
+            if selectedWord.kanji.contains("D L"){
+                self.textEditor.text.append(selectedWord.kana)
+            }
+            else{
+                self.textEditor.text.append("\(selectedWord.kanji)")
+            }
+        }
+        else{
+            self.textEditor.text.append("\(selectedWord.kanji)")
+        }
+        
     }
 }
 
 
 
 extension WriterVC: SaveDialogBoxDelegate{
+    func icloudSaveBtnPressed(fileName: String?) {
+        if let fileName, let content = textEditor.text{
+            if content.isEmpty{
+                Loaf("File content cannot be empty", state: .custom(.init(backgroundColor:  #colorLiteral(red: 0.737254902, green: 0, blue: 0.1764705882, alpha: 1),icon: UIImage(systemName: "square.and.arrow.down"))),presentingDirection: .vertical,sender: self).show(.short)
+            }
+            else{
+                FileManagerService.shared.saveFileToiCloud(fileName: fileName, content: content) { error  in
+                    if let error{
+                        self.showErrorAlert(title: "Error", message: error.localizedDescription, positiveBtnTitle: "Ok")
+                        
+                    }
+                    else{
+                        DispatchQueue.main.async{
+                            Loaf("File saved to iCloud Drive", state: .custom(.init(backgroundColor:  #colorLiteral(red: 0.737254902, green: 0, blue: 0.1764705882, alpha: 1),icon: UIImage(systemName: "square.and.arrow.down"))),presentingDirection: .vertical,sender: self).show(.short)
+                       
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
     func saveBtnPressed(fileName: String?) {
         print(fileName)
         if let fileName, let content = textEditor.text{

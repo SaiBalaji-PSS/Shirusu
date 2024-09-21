@@ -55,6 +55,22 @@ class FileManagerService{
 //            
 //        }
     }
+    func saveFileToiCloud(fileName: String,content: String,onCompletion:@escaping(Error?)->(Void)){
+        let containerIdentifier = "iCloud.sheets"
+        
+        guard let containerURL = fm.url(forUbiquityContainerIdentifier: containerIdentifier) else{return }
+        print(containerURL)
+        let documentsURL = containerURL.appendingPathComponent("Documents/\(fileName).txt")
+        do{
+            
+            try content.write(to: documentsURL, atomically: true, encoding: .utf8)
+            onCompletion(nil)
+        }
+        catch{
+            print(error)
+            onCompletion(error)
+        }
+    }
     func readAllSavedFiles(onCompletion:@escaping([URL]?,Error?)->(Void)){
         let documentPath = fm.urls(for: .documentDirectory, in: .userDomainMask).first
         var finalURL = documentPath?.appendingPathComponent("MySheets")
