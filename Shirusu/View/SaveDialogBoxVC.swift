@@ -18,23 +18,46 @@ class SaveDialogBoxVC: UIViewController {
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var saveBtn: UIButton!
     
+    @IBOutlet weak var alertLbl: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         self.cancelBtn.layer.borderColor = #colorLiteral(red: 0.737254902, green: 0, blue: 0.1764705882, alpha: 1)
         self.cancelBtn.layer.borderWidth = 1
+        self.alertLbl.isHidden = true
+        self.fileNameTextField.delegate = self
     }
 
 
     @IBAction func saveBtnPressed(_ sender: Any) {
-        self.delegate?.saveBtnPressed(fileName: self.fileNameTextField.text)
-        self.dismiss(animated: true)
+        if let fileName = fileNameTextField.text{
+            if fileName.isEmpty{
+                self.alertLbl.isHidden = false
+            }
+            else{
+              
+                self.alertLbl.isHidden = true
+                self.dismiss(animated: true)
+                self.delegate?.saveBtnPressed(fileName: fileName)
+            }
+        }
+        else{
+            self.alertLbl.isHidden = false 
+        }
+       
+       
     }
     
 
     @IBAction func cancelBtnPressed(_ sender: Any) {
         self.delegate?.cancelBtnPressed()
         self.dismiss(animated: true)
+    }
+}
+
+extension SaveDialogBoxVC: UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.alertLbl.isHidden = true
     }
 }

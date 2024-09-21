@@ -11,4 +11,5 @@ target 'Shirusu' do
    pod 'DropDown', '2.3.13'
    pod 'RealmSwift', '~>10'
    pod 'Shuffle-iOS'
+   pod 'Loaf'
 end

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -10,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SaveDialogBoxVC" customModule="Shirusu" customModuleProvider="target">
             <connections>
+                <outlet property="alertLbl" destination="B4g-Gj-MFa" id="mhR-aU-W03"/>
                 <outlet property="cancelBtn" destination="AGL-DJ-STV" id="ZU7-Et-C2n"/>
                 <outlet property="fileNameTextField" destination="sdV-Oq-5Vy" id="UlJ-MY-xfu"/>
                 <outlet property="saveBtn" destination="UYV-uf-3Zf" id="cDQ-d4-PcJ"/>
@@ -34,7 +36,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sdV-Oq-5Vy">
-                            <rect key="frame" x="16" y="79" width="345" height="44"/>
+                            <rect key="frame" x="16" y="67" width="345" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="Bys-Jo-cf9"/>
                             </constraints>
@@ -74,17 +76,29 @@
                                 </button>
                             </subviews>
                         </stackView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="File name cannot be empty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4g-Gj-MFa">
+                            <rect key="frame" x="16" y="113" width="345" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="WTv-Sx-Vth"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="ao6-wG-xTw" secondAttribute="bottom" constant="8" id="27S-GH-Bze"/>
                         <constraint firstAttribute="height" constant="201" id="2gh-9n-jEK"/>
-                        <constraint firstItem="sdV-Oq-5Vy" firstAttribute="top" secondItem="BcY-gV-pbT" secondAttribute="bottom" constant="22" id="Agg-13-dcx"/>
+                        <constraint firstItem="sdV-Oq-5Vy" firstAttribute="top" secondItem="BcY-gV-pbT" secondAttribute="bottom" constant="10" id="Agg-13-dcx"/>
+                        <constraint firstAttribute="trailing" secondItem="B4g-Gj-MFa" secondAttribute="trailing" constant="16" id="Dz1-I2-2uz"/>
                         <constraint firstAttribute="trailing" secondItem="BcY-gV-pbT" secondAttribute="trailing" id="Iib-c7-O1K"/>
+                        <constraint firstItem="B4g-Gj-MFa" firstAttribute="top" secondItem="sdV-Oq-5Vy" secondAttribute="bottom" constant="2" id="QSF-tD-e7y"/>
                         <constraint firstItem="sdV-Oq-5Vy" firstAttribute="leading" secondItem="TFH-GR-v1g" secondAttribute="leading" constant="16" id="QiD-8A-Ujm"/>
                         <constraint firstItem="BcY-gV-pbT" firstAttribute="leading" secondItem="TFH-GR-v1g" secondAttribute="leading" constant="18" id="ULH-79-qxq"/>
                         <constraint firstAttribute="trailing" secondItem="sdV-Oq-5Vy" secondAttribute="trailing" constant="16" id="c7Q-yu-GLV"/>
                         <constraint firstItem="ao6-wG-xTw" firstAttribute="centerX" secondItem="TFH-GR-v1g" secondAttribute="centerX" id="f67-8n-GcB"/>
+                        <constraint firstItem="B4g-Gj-MFa" firstAttribute="leading" secondItem="TFH-GR-v1g" secondAttribute="leading" constant="16" id="ggs-HU-cK2"/>
                         <constraint firstItem="BcY-gV-pbT" firstAttribute="top" secondItem="TFH-GR-v1g" secondAttribute="top" constant="8" id="pye-OC-0l0"/>
                     </constraints>
                 </view>

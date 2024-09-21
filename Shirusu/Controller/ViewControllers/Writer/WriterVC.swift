@@ -7,6 +7,7 @@
 
 import UIKit
 import EasyTipView
+import Loaf
 
 class WriterVC: BaseVC {
     //MARK: - PROPERTIES
@@ -64,8 +65,11 @@ class WriterVC: BaseVC {
 
         self.textEditor.text = ""
         self.view.endEditing(true)
-        self.isSelectModeEnalbed = false 
+        self.isSelectModeEnalbed = false
+        self.textEditor.isEditable = true
+        self.textEditor.isSelectable = true
         //show toast
+        Loaf("Created new sheet", state: .custom(.init(backgroundColor:  #colorLiteral(red: 0.737254902, green: 0, blue: 0.1764705882, alpha: 1),icon: UIImage(systemName: "doc.badge.plus"))),presentingDirection: .vertical,sender: self).show(.short)
     }
     
     @IBAction func addToListBtnPressed(_ sender: Any) {
@@ -75,6 +79,9 @@ class WriterVC: BaseVC {
             RealmManager.shared.saveDataToRealm(word: flashCardWord) { error  in
                 if let error{
                     self.showErrorAlert(title: "Error", message: error.localizedDescription, positiveBtnTitle: "Ok")
+                }
+                else{
+                    Loaf("Added to flash card list", state: .custom(.init(backgroundColor:  #colorLiteral(red: 0.737254902, green: 0, blue: 0.1764705882, alpha: 1),icon: UIImage(systemName: "bookmark"))),presentingDirection: .vertical,sender: self).show(.short)
                 }
             }
         }
@@ -127,6 +134,7 @@ class WriterVC: BaseVC {
             self.textEditor.isEditable = false
             self.textEditor.isSelectable = true
             self.isSelectModeEnalbed = true
+            Loaf("Selection mode enabled", state: .custom(.init(backgroundColor:  #colorLiteral(red: 0.737254902, green: 0, blue: 0.1764705882, alpha: 1),icon: UIImage(systemName: "character.cursor.ibeam.ja"))),presentingDirection: .vertical,sender: self).show(.short)
         }
         else{
            // self.textEditor.resignFirstResponder()
@@ -138,6 +146,7 @@ class WriterVC: BaseVC {
             self.textEditor.isEditable = true
             self.textEditor.isSelectable = true
             self.isSelectModeEnalbed = false
+            Loaf("Selection mode disabled", state: .custom(.init(backgroundColor:  #colorLiteral(red: 0.737254902, green: 0, blue: 0.1764705882, alpha: 1),icon: UIImage(systemName: "character.cursor.ibeam.ja"))),presentingDirection: .vertical,sender: self).show(.short)
         }
 
        
@@ -353,13 +362,25 @@ extension WriterVC: WordSearchVCDelegate{
 extension WriterVC: SaveDialogBoxDelegate{
     func saveBtnPressed(fileName: String?) {
         print(fileName)
-        if let fileName, let content = textEditor.text, content.isEmpty == false{
-            FileManagerService.shared.saveFile(fileName: fileName, content: content) { error  in
-                if let error{
-                    self.showErrorAlert(title: "Error", message: error.localizedDescription, positiveBtnTitle: "Ok")
-                    
+        if let fileName, let content = textEditor.text{
+            if content.isEmpty{
+                Loaf("File content cannot be empty", state: .custom(.init(backgroundColor:  #colorLiteral(red: 0.737254902, green: 0, blue: 0.1764705882, alpha: 1),icon: UIImage(systemName: "square.and.arrow.down"))),presentingDirection: .vertical,sender: self).show(.short)
+            }
+            else{
+                FileManagerService.shared.saveFile(fileName: fileName, content: content) { error  in
+                    if let error{
+                        self.showErrorAlert(title: "Error", message: error.localizedDescription, positiveBtnTitle: "Ok")
+                        
+                    }
+                    else{
+                        DispatchQueue.main.async{
+                            Loaf("File saved", state: .custom(.init(backgroundColor:  #colorLiteral(red: 0.737254902, green: 0, blue: 0.1764705882, alpha: 1),icon: UIImage(systemName: "square.and.arrow.down"))),presentingDirection: .vertical,sender: self).show(.short)
+                        }
+                        
+                    }
                 }
             }
+           
         }
        
     }

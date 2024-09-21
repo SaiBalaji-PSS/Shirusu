@@ -8,6 +8,8 @@
 import UIKit
 import Shuffle_iOS
 import DropDown
+import Loaf
+
 
 class CardReviewVC: BaseVC {
     
@@ -35,6 +37,7 @@ class CardReviewVC: BaseVC {
         self.savedWords.shuffle()
         self.cardStack.reloadData()
         //show toast
+        Loaf("Flash cards shuffled", state: .custom(.init(backgroundColor:  #colorLiteral(red: 0.737254902, green: 0, blue: 0.1764705882, alpha: 1),icon: UIImage(systemName: "square.and.arrow.down"))),presentingDirection: .vertical,sender: self).show(.short)
         
     }
     @IBAction func fontSizeBtnPressed(_ sender: Any) {
@@ -93,6 +96,8 @@ class CardReviewVC: BaseVC {
     
     func handleGameOver(){
         let highScore = UserDefaults.standard.integer(forKey: "HIGH_SCORE")
+        print(currentScore)
+        print(cardFlipCount)
         currentScore = currentScore - cardFlipCount
         if currentScore < 0{
             currentScore = 0
@@ -128,13 +133,17 @@ extension CardReviewVC: SwipeCardStackDelegate, SwipeCardStackDataSource{
     func cardStack(_ cardStack: SwipeCardStack, didSwipeCardAt index: Int, with direction: SwipeDirection) {
         
         if direction == .left{
+            
             self.currentScore = currentScore - 1
             if self.currentScore < 0{
                 self.currentScore = 0
             }
+            print("MINUS \(currentScore)")
         }
         else if direction == .right{
+           
             self.currentScore = currentScore + 1
+            print("PLUS \(currentScore)")
         }
     }
     func didSwipeAllCards(_ cardStack: SwipeCardStack) {

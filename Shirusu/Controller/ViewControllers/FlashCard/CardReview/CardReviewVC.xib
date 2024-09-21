@@ -23,10 +23,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5a-A4-5kf">
-                    <rect key="frame" x="0.0" y="59" width="393" height="65"/>
+                    <rect key="frame" x="0.0" y="54" width="393" height="65"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XuW-An-u2y">
-                            <rect key="frame" x="8" y="7.6666666666666714" width="50" height="50"/>
+                            <rect key="frame" x="8" y="7.6666666666666643" width="50" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="JTh-fV-28m"/>
                                 <constraint firstAttribute="height" constant="50" id="fbM-vw-HWL"/>
@@ -102,7 +102,7 @@
             <constraints>
                 <constraint firstItem="j5a-A4-5kf" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Mlp-hI-7Yb"/>
                 <constraint firstItem="j5a-A4-5kf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ffm-Uc-dS8"/>
-                <constraint firstItem="j5a-A4-5kf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="pWq-33-4Wn"/>
+                <constraint firstItem="j5a-A4-5kf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="-5" id="pWq-33-4Wn"/>
             </constraints>
             <point key="canvasLocation" x="-11.450381679389313" y="19.718309859154932"/>
         </view>
